@@ -23,7 +23,7 @@ public class ReversePolishNotation_PRN_ver2 {
                 stack[top++] = Integer.parseInt(token);
             }
         }
-            return stack[0];
+        return stack[0];
     }
 
     public static void main(String[] args){
