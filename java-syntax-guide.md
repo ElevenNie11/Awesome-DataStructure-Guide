@@ -30,3 +30,13 @@ List是Java中表示**有序集合**的接口，它可以按顺序保存多个�
     System.out.println(result.get(0)); // 5
 ````
 ![alt List和数组的区别](image.png)
+
+### toString() 函数
+当函数返回的是 List<String> 时，`System.out.println`会调用它的toString()，所以输出不用写 for 循环
+当然也可以写，如下：
+````
+    List<String> result = buildArray(target, n);
+    for(int i = 0; i < result.size(); i++){
+        System.out.println(result.get(i));
+    }
+````
