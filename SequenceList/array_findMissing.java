@@ -30,8 +30,8 @@ public class array_findMissing {
     }
 }
 
-// 假设有：nums = [4, 3, 2, 7, 8, 2, 3, 1]
-// 那么有：index = nums[1] - 1 = 3 - 1 = 2;
-// 然后有：nums[2] = -nums[2];               把 2 改成 -2
-// 现在有：nums = [4, 3, -2, 7, 8, 2, 3, 1]
-// 而在新一轮循环里，如果不把nums[i]用Math.abs还原成正数，那么就会出现错误的下标计算（ArrayIndexOutOfBoundsException）
+// 假设有：nums = [2, 1, 2, 7, 8, 2, 3, 1]
+// 那么有：index = nums[0] - 1 = 2 - 1 = 1;
+// 然后有：nums[index] = nums[1] = -nums[1] = -1;
+// 现在有：nums = [2, -1, 2, 7, 8, 2, 3, 1]
+// 然后有：index = nums[1] - 1 = -1 - 1 = -2;  (错误: 负数下标不合法)
