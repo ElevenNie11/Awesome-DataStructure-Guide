@@ -46,3 +46,8 @@ List是Java中表示**有序集合**的接口，它可以按顺序保存多个�
 - data[++top] = value;   //先自增,再使用
 - data[top--] = value;   //先使用,再自减
 - data[top++] = value;   //先使用,再自增
+
+### 总结【加入操作】方法
+- list.add()
+- stack.push()
+- arr[index++]
