@@ -52,6 +52,12 @@ List是Java中表示**有序集合**的接口，它可以按顺序保存多个�
 - stack.push()
 - arr[index++]
 
+### 总结【查看操作】方法
+- list.get()
+- stack.peek()  查看**栈顶**元素
+- arr[index]
+
 ### 关于得到一个【数据结构的大小】方法
-- arr.length
+- list.size()
 - stack.size()
+- arr.length
