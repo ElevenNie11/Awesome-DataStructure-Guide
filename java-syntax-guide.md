@@ -20,3 +20,13 @@
 - new int[]{...}：创建一个新的整数数组，并用花括号里的值初始化
 - return立刻结束方法并**返回数组**，返回的两个下标分别是：之前找到的补数下标，以及当前数字的下标
 - indexMap.put(nums[i], i)作用：如果还没找到配对，就把当前数字和它的下标放进哈希表
+
+### List<>
+List是Java中表示**有序集合**的接口，它可以按顺序保存多个元素，并允许通过下标访问，常用实现是**ArrayList**
+````
+    List<Integer> result = new ArrayList<>();
+    result.add(5);
+    result.add(6);
+    System.out.println(result.get(0)); // 5
+````
+![alt List和数组的区别](image.png)
