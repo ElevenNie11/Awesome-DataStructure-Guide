@@ -31,3 +31,12 @@ public class ReversePolishNotation_PRN_ver2 {
         System.out.println(evalRPN(tokens));
     }
 }
+
+// 为什么不能写成 top-- 呢？
+// 因为 top-- 是先使用 top 的值再减 1，而我们需要的是先减 1 再使用 top 的值，所以要写成 --top 
+
+// data[--top] = value;   //先自减,再使用
+// data[++top] = value;   //先自增,再使用
+
+// data[top--] = value;   //先使用,再自减
+// data[top++] = value;   //先使用,再自增

@@ -40,3 +40,9 @@ List是Java中表示**有序集合**的接口，它可以按顺序保存多个�
         System.out.println(result.get(i));
     }
 ````
+
+### [自增自减]在用数组当栈的用法中的注意事项
+- data[--top] = value;   //先自减,再使用
+- data[++top] = value;   //先自增,再使用
+- data[top--] = value;   //先使用,再自减
+- data[top++] = value;   //先使用,再自增
