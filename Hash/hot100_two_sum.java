@@ -9,6 +9,7 @@ public class hot100_two_sum {
             int complement = target - nums[i];
             // 查找之前出现过的补数，避免重复使用同一个元素
             if(indexMap.containsKey(complement)){
+                // 这是返回了一个数组，包含了两个数字的下标
                 return new int[]{indexMap.get(complement), i};
             }
             indexMap.put(nums[i], i);
