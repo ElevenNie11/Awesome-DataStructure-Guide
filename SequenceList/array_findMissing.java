@@ -34,4 +34,5 @@ public class array_findMissing {
 // 那么有：index = nums[0] - 1 = 2 - 1 = 1;
 // 然后有：nums[index] = nums[1] = -nums[1] = -1;
 // 现在有：nums = [2, -1, 2, 7, 8, 2, 3, 1]
+// 如果不使用 Math.abs()，那么在下一次循环中：
 // 然后有：index = nums[1] - 1 = -1 - 1 = -2;  (错误: 负数下标不合法)
