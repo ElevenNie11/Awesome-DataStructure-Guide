@@ -1,4 +1,4 @@
-package Stack;
+package Stack.normal_stack;
 import java.util.Stack;
 // 逆波兰表达式求值
 // 程序从左到右读取表达式：数字入栈；遇到运算符时，弹出右操作数和左操作数

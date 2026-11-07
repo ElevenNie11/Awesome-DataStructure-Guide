@@ -1,4 +1,4 @@
-package Stack;
+package Stack.normal_stack;
 
 public class ReversePolishNotation_PRN_ver2 {
     public static int evalRPN(String[] tokens){
