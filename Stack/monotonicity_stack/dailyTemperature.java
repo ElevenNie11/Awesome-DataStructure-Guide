@@ -10,8 +10,8 @@ public class dailyTemperature {
         for(int i = 0; i < n; i++){
             // 今天温度更高，为栈顶日期找到下一个更暖和的日子
             while(top >= 0 && temperatures[i] > temperatures[stack[top]]){
-                int previousDay = stack[top--];
-                answer[previousDay] = i - previousDay;
+                int previousDate = stack[top--];
+                answer[previousDate] = i - previousDate;
             }
             stack[++top] = i;
         }
