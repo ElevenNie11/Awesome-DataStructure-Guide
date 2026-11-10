@@ -8,6 +8,8 @@ public class ticketTime_ver2 {
             if(i <= k){
                 time += Math.min(tickets[i], tickets[k]);
             }else{
+                // 排在第 k 个人之后的顾客只会贡献 tickets[k] - 1 次买票的时间，因为当第 k 个人买完最后一张票后，程序就得到了结果
+                // 每轮排在第 k 个人之后。第 k 个人买完最后一张时，这些人还没轮到，所以最多只能买 tickets[k] - 1 张
                 time += Math.min(tickets[i], tickets[k] - 1);
             }
         }
