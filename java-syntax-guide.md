@@ -61,3 +61,20 @@ List是Java中表示**有序集合**的接口，它可以按顺序保存多个�
 - list.size()
 - stack.size()
 - arr.length
+
+### 普通for循环和增加for循环
+#### 普通for循环
+````
+    for(int i = 0; i < students.length; i++){
+        int student = students[i];
+        System.out.println(student);
+    }
+````
+#### 增强for循环
+`for(int student : students)`是Java的增强for循环，也叫*foreach*，它会依次取出students数组里的每个值，并把当前值放进变量student
+````
+    int[] students = {1, 1, 0, 0};
+    for(int student : students){
+        System.out.println(student);
+    }
+````
