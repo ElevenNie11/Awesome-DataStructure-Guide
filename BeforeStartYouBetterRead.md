@@ -1,0 +1,16 @@
+# BeforeStartYouBetterRead - 开始前你最好阅读本md文档
+
+## 目录
+- SequenceList-顺序表
+- Stack-栈
+- Queue-队列
+- Hash-哈希
+- Tree-树
+- Graph-图
+
+---
+
+## 题目来源
+文件夹没有**Awesome**标注的，里面的题目大部分来自力扣*leetcode*
+
+文件夹有**Awesome**标注的，则是一些课程必备题目和经典题目
