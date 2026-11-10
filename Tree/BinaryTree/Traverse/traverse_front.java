@@ -1,6 +1,6 @@
-package Tree.BinaryTree;
+package Tree.BinaryTree.Traverse;
 
-public class traverse_last {
+public class traverse_front {
     static class Node {
         int value;
         Node left;
@@ -11,14 +11,14 @@ public class traverse_last {
         }
     }
 
-    // 后序遍历：左、右、根
+    // 前序遍历：根、左、右
     public static void traverse(Node node){
         if(node == null){
             return;
         }
+        System.out.print(node.value + " ");
         traverse(node.left);
         traverse(node.right);
-        System.out.print(node.value + " ");
     }
 
     public static void main(String[] args){
