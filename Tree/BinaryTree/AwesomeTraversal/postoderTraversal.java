@@ -1,6 +1,6 @@
-package Tree.BinaryTree.AwesomeTraverse;
+package Tree.BinaryTree.AwesomeTraversal;
 
-public class traverse_last {
+public class postoderTraversal {
     static class Node {
         int value;
         Node left;

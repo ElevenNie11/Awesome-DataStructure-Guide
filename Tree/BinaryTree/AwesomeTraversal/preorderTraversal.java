@@ -1,6 +1,6 @@
-package Tree.BinaryTree.AwesomeTraverse;
+package Tree.BinaryTree.AwesomeTraversal;
 
-public class traverse_front {
+public class preorderTraversal {
     static class Node {
         int value;
         Node left;

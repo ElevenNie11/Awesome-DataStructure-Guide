@@ -1,6 +1,6 @@
-package Tree.BinaryTree.AwesomeTraverse;
+package Tree.BinaryTree.AwesomeTraversal;
 
-public class traverse_middle {
+public class inorderTraversal {
     static class Node {
         int value;
         Node left;
