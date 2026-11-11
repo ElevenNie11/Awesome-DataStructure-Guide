@@ -26,4 +26,4 @@
 ### 二叉搜索树BST的概念
 - **二叉树**：每个节点最多有两个孩子，分别是左孩子和右孩子
 - **二叉搜索树（BST）**：**首先是一棵二叉树**，还要求节点值有顺序：左子树的值小于当前节点，右子树的值大于当前节点
-- **判断一棵二叉树是否为BST**：使用中序遍历inorderTraversal，见`Awesome01/checkBST`
+- **判断一棵二叉树是否为BST**：使用中序遍历inorderTraversal，见`Awesome01/checkBST.java`
