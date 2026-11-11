@@ -29,7 +29,7 @@ List是Java中表示**有序集合**的接口，它可以按顺序保存多个�
     result.add(6);
     System.out.println(result.get(0)); // 5
 ````
-![alt List和数组的区别](image.png)
+![alt List和数组的区别](List和数组的区别.png)
 
 ### toString() 函数
 当函数返回的是 List<String> 时，`System.out.println`会调用它的toString()，所以输出不用写 for 循环
