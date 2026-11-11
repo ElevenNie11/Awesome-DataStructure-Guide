@@ -1,12 +1,12 @@
 package Tree.BinaryTree.Awesome01;
 
 // 一个节点
-class TreeNode {
+class TreeNode{
     int value;
     TreeNode left;
     TreeNode right;
 
-    TreeNode(int value) {
+    TreeNode(int value){
         this.value = value;
     }
 }
@@ -29,6 +29,7 @@ public class checkBST {
     }
 
     // 辅助函数：检查当前节点是否处于合法的取值范围内
+    // 递归检查完左右子树
     private static boolean checkRange(TreeNode node, long min, long max){
         if(node == null){
             return true;
@@ -41,8 +42,9 @@ public class checkBST {
 
         // 左子树所有节点都必须小于当前节点
         // 右子树所有节点都必须大于当前节点
-        return checkRange(node.left, min, node.value)
-                && checkRange(node.right, node.value, max);
+        // min是左子树的叶子节点
+        // max是右子树的叶子节点
+        return checkRange(node.left, min, node.value) && checkRange(node.right, node.value, max);
     }
 
     public static void main(String[] args){
@@ -55,10 +57,10 @@ public class checkBST {
         root.right.left = new TreeNode(14);
         root.right.right = new TreeNode(16);
 
-        System.out.print("合法BST的中序遍历结果：");
+        System.out.print("合法BST的中序遍历结果: ");  // 7 8 9 10 12 14 15 16
         inorderTraversal(root);
         System.out.println();
-        System.out.println("是否为BST：" + isBST(root));
+        System.out.println("是否为BST: " + isBST(root));
 
         // 节点12虽然大于父节点5，但它位于根节点10的左子树中，因此不是BST
         TreeNode invalidRoot = new TreeNode(10);
@@ -66,6 +68,6 @@ public class checkBST {
         invalidRoot.right = new TreeNode(15);
         invalidRoot.left.right = new TreeNode(12);
 
-        System.out.println("非法树是否为BST：" + isBST(invalidRoot));
+        System.out.println("非法树是否为BST: " + isBST(invalidRoot));
     }
 }
