@@ -1,6 +1,6 @@
-package Tree.BinaryTree.Traverse;
+package Tree.BinaryTree.AwesomeTraverse;
 
-public class traverse_middle {
+public class traverse_last {
     static class Node {
         int value;
         Node left;
@@ -11,14 +11,14 @@ public class traverse_middle {
         }
     }
 
-    // 中序遍历：左、根、右
+    // 后序遍历：左、右、根
     public static void traverse(Node node){
         if(node == null){
             return;
         }
         traverse(node.left);
-        System.out.print(node.value + " ");
         traverse(node.right);
+        System.out.print(node.value + " ");
     }
 
     public static void main(String[] args){
