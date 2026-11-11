@@ -1,4 +1,4 @@
-package Tree.BinaryTree;
+package Tree.BinaryTree.Awesome01;
 import java.util.*;
 
 // 判断一棵树是否为二叉树
