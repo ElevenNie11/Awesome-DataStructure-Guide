@@ -78,3 +78,19 @@ List是Java中表示**有序集合**的接口，它可以按顺序保存多个�
         System.out.println(student);
     }
 ````
+
+#### import java.util.*;
+
+````
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ArrayDeque;
+import java.util.Deque;
+````
+
+这四行分别导入了两组集合类型：
+
+- ArrayList和List：用于顶点的邻接表，保存它相连的顶点
+- ArrayDeque和Deque：用于DFS的栈，暂存待访问的顶点
+
+虽然变量名叫stack，但“栈”描述的是后进先出的使用方式，不一定要用名为Stack的类。`Deque`是**双端队列**接口，也能用`push`、`pop`来实现栈操作
