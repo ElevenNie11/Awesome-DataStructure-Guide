@@ -38,7 +38,9 @@ void connect(vertex<T> other){
 调用`a.connect(b)`会同时建立：
 - A的邻接表包含B
 - B的邻接表包含A
+
 因此这表示一条无向边
+
 如果图是有向图，通常只添加`neighbors.add(other)`，不添加反向关系
 
 ---
@@ -57,7 +59,7 @@ public static <T> void DFS(vertex<T> startVertex){
 ```
 如果起点是null，就直接返回；否则创建一个栈，并把起点压入栈中
 
-虽然这里的类型叫**Deque**，但它支持push（入栈）和pop（出栈），所以可以按栈的方式使用，`ArrayDeque` 是它的**实现类**
+虽然这里的类型叫**Deque**，但它支持`push`（入栈）和`pop`（出栈），所以可以按栈的方式使用，`ArrayDeque` 是它的**实现类**
 
 ````
 while(!stack.isEmpty()){
@@ -94,7 +96,7 @@ for(int i = neighbors.size() - 1; i >= 0; i--){
 ---
 
 ## 3. Java中的泛型 T 是什么
-T是一个类型参数，可以理解为“稍后指定的数据类型”，这样就可以允许任何类型的object了
+T是一个类型参数，可以理解为“稍后指定的数据类型”，这样就可以允许参数接收任何类型的对象了（**在new对象时指定出实际类型**）
 
 ````
 class vertex<T>
@@ -107,12 +109,16 @@ vertex<Integer> number = new vertex<>(42);
 ````
 【**请注意**】：
 - 泛型类型参数**不能**直接使用基本类型
-- 例如不能写 vertex<int>；应使用包装类`Integer`、`String`、`Long`等
+- 例如不能写`vertex<int>`，应使用包装类`Integer`、`String`、`Long`等
 
-#### Q: 为什么**DFS方法**也要写<T>?
+---
+
+### 问题
+#### Q: 为什么DFS方法的方法签名里也要显式写出 `<T>`?
+（*static静态方法不用通过创建对象就可以直接被调用*）
 ````
 public static <T> void DFS(vertex<T> startVertex)
 ````
-- 这里的T是这个静态方法自己声明的类型参数，意思是：DFS可以接收任意数据类型的顶点
-- 它和`class vertex<T>`中的T不共享作用范围，**静态方法不能直接依赖某个对象的类型参数，因此要在方法签名里单独声明<T>**
-- 调用时，Java会从参数推断T应该是什么数据类型：`DFS(a);`因为a是是`vertex<String>`，所以这次调用中T的类型就是String
+- 这里的T是这个静态方法自己声明的类型参数，意思是：DFS可以接收任意数据类型的参数
+- 【**注意**】它和`class vertex<T>`中的T不共享作用范围，**静态方法不能直接依赖某个对象的类型参数，因此要在方法签名里单独声明<T>**
+- 调用时，Java会从参数推断T应该是什么数据类型：`DFS(a);`因为a是`vertex<String>`，所以这次调用中T的类型就是`String`
