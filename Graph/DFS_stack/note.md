@@ -113,6 +113,6 @@ vertex<Integer> number = new vertex<>(42);
 ````
 public static <T> void DFS(vertex<T> startVertex)
 ````
-- 这里的 <T> 是这个静态方法自己声明的类型参数，意思是：DFS可以接收任意数据类型的顶点
+- 这里的T是这个静态方法自己声明的类型参数，意思是：DFS可以接收任意数据类型的顶点
 - 它和`class vertex<T>`中的T不共享作用范围，**静态方法不能直接依赖某个对象的类型参数，因此要在方法签名里单独声明<T>**
 - 调用时，Java会从参数推断T应该是什么数据类型：`DFS(a);`因为a是是`vertex<String>`，所以这次调用中T的类型就是String
