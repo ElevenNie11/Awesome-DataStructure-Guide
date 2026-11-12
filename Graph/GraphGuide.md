@@ -33,7 +33,13 @@
 
 ### 深度优先搜索（DFS）
 
-沿一条路径尽可能深入，再回退继续搜索。可用递归或显式栈实现。常用于连通分量、找路径、检测环、拓扑排序、强连通分量等
+沿一条路径尽可能深入，再回退继续搜索（backtrack），可用递归（recursive）或显式栈（explicit stack）实现
+
+DFS goes as far as it can down a given path,then backtrack until it finds another unexplored path and visit it.
+
+#### Each vertex is visited only once!!!
+
+*In BinaryTree's traversal,the result will be the unique(only one),but in Graph's tarversal,the result is NOT unique.And the results depend on the order we visit vertex's neighbors.*
 
 ### 广度优先搜索（BFS）
 
@@ -54,12 +60,10 @@
 
 ---
 
-## 5. 最小生成树-MSTs
-
-适用于**连通、无向、带权图**。生成树包含所有顶点、连通且无环；最小生成树是总边权最小的生成树。若图不连通，求得的是最小生成森林。
-
-- **Kruskal（克鲁斯卡尔算法）**：边按权值从小到大排序，依次加入不会形成环的边。使用并查集判断两端是否已连通；复杂度通常为 `O(E log E)`。
-- **Prim（普里姆算法）**：从任意顶点开始，每次选择连接已选顶点集合与未选顶点的最小边扩展。配合优先队列时复杂度约为 `O((V+E) log V)`。
+## 5. 最小生成树-MST
+克鲁斯卡尔算法是以边edge为突破点，而普里姆算法则是以顶点vertex为突破点
+- **Kruskal（克鲁斯卡尔算法）**：边按权值从小到大排序，依次加入不会形成环的边。使用并查集判断两端是否已连通；复杂度通常为 `O(E log E)`
+- **Prim（普里姆算法）**：从任意顶点开始，每次选择连接已选顶点集合与未选顶点的最小边扩展。配合优先队列时复杂度约为 `O((V+E) log V)`
 
 ---
 
