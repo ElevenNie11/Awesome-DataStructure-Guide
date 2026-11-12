@@ -15,13 +15,26 @@
 
 #### 解决方案：如果想保留`package Graph;`，应把Graph的上一级项目目录设为源码根目录，让Graph成为包目录
 把项目根目录设为源码根目录，Graph就会作为包目录，**设置`java.project.sourcePaths为["."]`**即可，具体步骤如下：
-1. `Ctrl+Shift+P`，运行`Preferences: Open Workspace Settings (JSON)`
-2. 在`.vscode/settings.json`中加入：
-   ````
+
+直接在根目录里建`.vscode`文件夹，并且新增文件`.settings.json`
+
+填入代码：
+````
    {
      "java.project.sourcePaths": ["."]
    }
-   ````
-   如果文件里已有其他设置，把这一项加进去，并保留原有内容
-3. 保存后按`Ctrl+Shift+P`，运行`Java: Clean Java Language Server Workspace`，再选择重载窗口
-4. 这样一来，项目根目录下的Graph文件夹会被识别为包目录，文件中的`package Graph;`就和路径对应了
+````
+
+<img width="493" height="191" alt="image" src="https://github.com/user-attachments/assets/92d957d9-900a-4645-b36e-fda6ccd3b652" />
+
+按`Ctrl+Shift+P`打开命令面板
+
+输入`Java: Clean Java Language Server Workspace`，点击出现的同名命令
+
+<img width="440" height="134" alt="image" src="https://github.com/user-attachments/assets/6b2d7df7-fbf5-42d6-9d18-8469c2152b8e" />
+
+如果弹出确认提示，选择`Restart and delete`（重启并清理工作区缓存）
+
+<img width="497" height="158" alt="image" src="https://github.com/user-attachments/assets/ec3b6e1e-9ab0-48f7-82d9-5d9c00b0bd65" />
+
+如果没有自动重新加载，再按`Ctrl+Shift+P`，输入并运行`Developer: Reload Window`
