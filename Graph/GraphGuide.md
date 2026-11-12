@@ -1,4 +1,5 @@
 # GraphGuide-图知识指南
+# 树是一种特殊的图（是一种连通、无环的无向图），但图不是一定是树
 ## 1. 图的基本概念
 
 图通常记作 `G = (V, E)`：`V` 是顶点（Vertex）集合，`E` 是边（Edge）集合
@@ -67,6 +68,8 @@ DFS goes as far as it can down a given path,then backtrack until it finds anothe
 克鲁斯卡尔算法是以边edge为突破点，而普里姆算法则是以顶点vertex为突破点
 - **Kruskal（克鲁斯卡尔算法）**：边按权值从小到大排序，依次加入不会形成环的边。使用并查集判断两端是否已连通；复杂度通常为 `O(E log E)`
 - **Prim（普里姆算法）**：从任意顶点开始，每次选择连接已选顶点集合与未选顶点的最小边扩展。配合优先队列时复杂度约为 `O((V+E) log V)`
+
+**笔记见Graph文件夹下的minimum_spanning_tree文件里的note.png -> https://github.com/ElevenNie11/Awesome-DataStructure-Guide/blob/main/Graph/minimun_spanning_tree/note.jpg**
 
 ---
 
