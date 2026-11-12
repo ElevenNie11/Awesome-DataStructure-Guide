@@ -41,6 +41,9 @@ DFS goes as far as it can down a given path,then backtrack until it finds anothe
 
 *In BinaryTree's traversal,the result will be the unique(only one),but in Graph's tarversal,the result is NOT unique.And the results depend on the order we visit vertex's neighbors.* 二叉树的深度优先搜索结果是唯一的，但是图的深度优先搜索结果却是**不唯一**的，这取决于访问邻接点的次序如何
 
+- 用**显示栈**实现图的DFS：DFS_stack/note.md
+- 用**递归**实现图的DFS：DFS_recursive/note.md
+
 ### 广度优先搜索（BFS）
 
 使用队列，按距离起点的边数一层层访问。适合无权图中的最短路、层级关系和最少步数问题

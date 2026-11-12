@@ -1,4 +1,4 @@
-package Graph;
+package Graph.DFS_stack;
 // ArrayList和List：用于顶点的邻接表，保存它相连的顶点
 // ArrayDeque和Deque：用于DFS的栈，暂存待访问的顶点
 import java.util.ArrayList;
