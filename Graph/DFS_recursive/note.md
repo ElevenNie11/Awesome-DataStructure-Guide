@@ -1,5 +1,5 @@
 # 递归法
-## 对于【递归】的学习可以看一看Recusion/recursion-note.md里关于递归的笔记
+## 对于【递归】的学习可以看一看Recusion/recursion-note.md里关于递归的笔记👉[笔记](https://github.com/ElevenNie11/Awesome-DataStructure-Guide/blob/main/Recursion/recursion-note.md)
 
 ### DFS递归法
 ````
