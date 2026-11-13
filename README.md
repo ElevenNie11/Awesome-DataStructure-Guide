@@ -16,7 +16,7 @@
 
 因此`Graph/DepthFirstSearch.java`在Java看来位于源码根目录的顶层，属于默认包，预期包名就是 ""；但文件里声明了`package Graph;`，所以才会报错
 
-#### 解决方案：如果想保留`package Graph;`，应把Graph的上一级项目目录设为源码根目录，让Graph成为包目录
+#### ✅解决方案一：如果想保留`package Graph;`，应把Graph的上一级项目目录设为源码根目录，让Graph成为包目录
 把项目根目录设为源码根目录，Graph就会作为包目录，**设置`java.project.sourcePaths为["."]`**即可，具体步骤如下：
 
 直接在根目录里建`.vscode`文件夹，并且新增文件`.settings.json`
@@ -41,3 +41,9 @@
 <img width="497" height="158" alt="image" src="https://github.com/user-attachments/assets/ec3b6e1e-9ab0-48f7-82d9-5d9c00b0bd65" />
 
 如果没有自动重新加载，再按`Ctrl+Shift+P`，输入并运行`Developer: Reload Window`
+
+#### ✅解决方案二：直接删除
+- 在资源管理器中右键Recursion文件夹，运行`Java: Remove Folder from Java Source Path`
+<img width="684" height="492" alt="image" src="https://github.com/user-attachments/assets/3a161b0f-24cd-4afb-ba75-69eabd6b02db" />
+
+- 再右键项目根目录Awesome-DataStructure-Guide，运行`Java: Add Folder to Java Source Path`
