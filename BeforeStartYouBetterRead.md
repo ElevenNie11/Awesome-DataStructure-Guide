@@ -18,4 +18,4 @@
 ## 需要一定Java基础
 如果初学者暂时不熟悉java，可以参考以下**java语法笔记**↓
 
-https://github.com/ElevenNie11/Awesome-DataStructure-Guide/blob/main/java-syntax-guide.md
+👉[基础语法笔记-JavaSyntaxGuide](https://github.com/ElevenNie11/Awesome-DataStructure-Guide/blob/main/java-syntax-guide.md)
