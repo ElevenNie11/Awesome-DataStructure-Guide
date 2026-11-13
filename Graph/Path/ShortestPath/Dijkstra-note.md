@@ -16,17 +16,17 @@
 
 算法维护每个顶点到起点的当前最短距离 `distance`，以及最短路径上的前驱顶点 `predecessor`
 
-1. 起点距离设为 `0`，其他顶点距离设为无穷大 `inf`
-2. 在尚未确定最短距离的顶点中，选出当前距离最小的顶点 `curr`
-3. 将 `curr` 标记为已确定，并检查它的每个邻居
-4. 如果“起点到 `curr` 的距离 + `curr` 到邻居的边权”更小，就更新邻居的距离和前驱
-5. 重复以上步骤，直到所有可达顶点都确定，剩下的顶点就是不可达顶点
+- step1: Mark all nodes as unvisited.
+- step2: Assign to all nodes a tentative distance value.
+- **step3: For the current node,calculate the distance to all unvisited neighbors + Update shortest distance if new distance is shorter than old distance.**
+- step4: Mark current node as visited.
+- **step5: Choose new current node from unvisited nodes with minimal distance.**
 
 ### 由于边权不能为负，一旦取出当前距离最小的顶点，就不可能再经由其他未确定顶点找到更短的路线，因此可以安全地确定它的最短距离
 
 ---
 
-## 3. 实现迪杰斯特拉算法的两种方式
+## 3. 代码实现迪杰斯特拉算法的两种方式
 ### AdjacentMatrix邻接矩阵
 ### PriorityQueue优先队列（最常用）
 
