@@ -28,7 +28,7 @@ class vertex<T>{
 
 public class TopologicaSort {
     // 拓扑排序kahn算法
-    // 接收参数是？
+    // 接收参数是所有顶点
     public static <T> List<vertex<T>> TopoSort(List<vertex<T>> vertices){
         // 统计【每个顶点的入度】indegree
         Map<vertex<T>, Integer> indegree = new HashMap<>();

@@ -137,3 +137,47 @@ System.out.println(names.get(0));
 - 而这些方法具体由`ArrayList`来执行
 
 #### 【注意】：变量声明为接口类型后，只能直接调用该接口提供的方法，不能直接调用实现类独有的方法！
+
+---
+
+## 🚀📚Java常用集合接口里规定的方法
+### 接口规定可以使用哪些操作，具体实现由实现类提供
+例如：
+````
+Map<String, Integer> map = new HashMap<>();
+Queue<String> queue = new ArrayDeque<>();
+List<String> list = new ArrayList<>();
+````
+### #01. `Map<K, V>`：键值映射 / 常见实现类：`HashMap`
+
+| 方法 | 用途 | 示例 |
+|---|---|---|
+| `put(key, value)` | 添加或更新键值 | `map.put("A", 2);` |
+| `get(key)` | 根据键获取值；键不存在时返回 `null` | `map.get("A");` |
+| `containsKey(key)` | 判断是否包含指定键 | `map.containsKey("A");` |
+| `remove(key)` | 删除指定键值对 | `map.remove("A");` |
+| `size()` | 获取键值对数量 | `map.size();` |
+| `isEmpty()` | 判断是否为空 | `map.isEmpty();` |
+
+
+
+### #02.  `Queue<E>`：队列 / 常见实现类：`ArrayDeque`
+
+| 方法 | 用途 | 示例 |
+|---|---|---|
+| `offer(element)` | 将元素加入队尾 | `queue.offer("A");` |
+| `poll()` | 取出并移除队头元素；队列为空时返回 `null` | `queue.poll();` |
+| `peek()` | 查看队头元素但不移除；队列为空时返回 `null` | `queue.peek();` |
+| `isEmpty()` | 判断队列是否为空 | `queue.isEmpty();` |
+| `size()` | 获取队列中的元素数量 | `queue.size();` |
+
+### #03. `List<E>`：有序列表 / 常见实现类：`ArrayList`
+
+| 方法 | 用途 | 示例 |
+|---|---|---|
+| `add(element)` | 在列表末尾添加元素 | `list.add("A");` |
+| `get(index)` | 获取指定位置的元素 | `list.get(0);` |
+| `set(index, element)` | 替换指定位置的元素 | `list.set(0, "B");` |
+| `remove(index)` | 删除指定位置的元素 | `list.remove(0);` |
+| `size()` | 获取元素数量 | `list.size();` |
+| `isEmpty()` | 判断列表是否为空 | `list.isEmpty();` |
