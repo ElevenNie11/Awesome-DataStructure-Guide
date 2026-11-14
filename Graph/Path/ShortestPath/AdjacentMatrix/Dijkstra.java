@@ -70,7 +70,7 @@ public class Dijkstra {
             {inf, inf, 3, 2, 1, 0}   
         };
 
-        // 调用dijFun方法
+        // 调用dij方法
         dijkstra(vertices, weight, 0);
     }
 }
