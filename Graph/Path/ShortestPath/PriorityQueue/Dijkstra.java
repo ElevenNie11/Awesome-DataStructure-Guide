@@ -1,5 +1,4 @@
 package Graph.Path.ShortestPath.PriorityQueue;
-
 import java.util.PriorityQueue;
 
 // @Algorithm: 最短路径-迪杰斯特拉Dijkstra算法
@@ -23,41 +22,41 @@ public class Dijkstra {
         }
         distance[startVertex] = 0;  // 起始顶点距离为0
 
-        // 优先队列按距离从小到大取出顶点，队列元素为{顶点编号, 当前距离}
+        
+        // 【重要逻辑】
+        // 优先队列中的元素为{顶点编号, 起点到该顶点的当前距离}
         PriorityQueue<int[]> priorityQueue = new PriorityQueue<>((a, b) -> Integer.compare(a[1], b[1]));
-        priorityQueue.offer(new int[]{startVertex, 0});     // 将起点加入优先队列
+        priorityQueue.offer(new int[]{startVertex, 0});  // 从起点开始搜索
 
-        // 每次取出当前距离起点最近且尚未确定的顶点
+        // 每次取出当前距离起点最近的顶点
         while(!priorityQueue.isEmpty()){
             int[] current = priorityQueue.poll();
-            int currentVertex = current[0];                 // 当前顶点编号
-            int currentDistance = current[1];                // 入队时记录的距离
+            int currentVertex = current[0];
+            int currentDistance = current[1];
 
-            // 距离已被更新时，队列中的旧记录作废，跳过
+            // 如果该记录已经过期，说明此顶点后来发现了更短的距离
             if(currentDistance != distance[currentVertex] || visited[currentVertex]){
                 continue;
             }
-            // 取出后标记为已访问，该顶点的最短距离已经确定
             visited[currentVertex] = true;
 
-            // 又以该顶点为基点，更新其所有邻接点的距离
-            for(int j = 0; j < vertexCount; j++){
-                // 已确定的点跳过；没有边的点也跳过，避免 inf 相加溢出
-                if(visited[j] || weight[currentVertex][j] == inf){
+            // 尝试经过当前顶点到达其他顶点，更新更短的距离
+            for(int i = 0; i < vertexCount; i++){
+                if(visited[i] || weight[currentVertex][i] == inf){
                     continue;
                 }
-                // 避免距离相加超过int可表示范围
-                if(currentDistance > inf - weight[currentVertex][j]){
+                if(currentDistance > inf - weight[currentVertex][i]){
                     continue;
                 }
-                int newDistance = currentDistance + weight[currentVertex][j];
-                if(newDistance < distance[j]){
-                    distance[j] = newDistance;
-                    predecessor[j] = currentVertex;        // 记下j的前驱是currentVertex，方便回溯路径
-                    priorityQueue.offer(new int[]{j, newDistance}); // 距离变小后重新加入优先队列
+                int newDistance = currentDistance + weight[currentVertex][i];
+                if(newDistance < distance[i]){
+                    distance[i] = newDistance;
+                    predecessor[i] = currentVertex;
+                    priorityQueue.offer(new int[]{i, newDistance});
                 }
             }
         }
+
 
         // 输出起点到各个顶点的最短距离
         for(int i = 0; i < vertexCount; i++){
@@ -73,16 +72,17 @@ public class Dijkstra {
     // 测试Dijkstra
     public static void main(String[] args){
         // 图的表示方法之一：邻接矩阵
-        String[] vertices = {"A", "B", "C", "D", "E"};
+        String[] vertices = {"A", "B", "C", "D", "E", "F"};
         int[][] weight = {
-            {0, 2, inf, 6, inf},
-            {2, 0, 3, 8, 5},
-            {inf, 3, 0, inf, 7},
-            {6, 8, inf, 0, 9},
-            {inf, 5, 7, 9, 0}
+            {0, 2, inf, 8, inf, inf},
+            {2, 0, inf, 5, 6, inf},
+            {inf, inf, 0, inf, 9, 3},
+            {8, 5, inf, 0, 3, 2},
+            {inf, 6, 9, 3, 0, 1},
+            {inf, inf, 3, 2, 1, 0}   
         };
 
-        // 调用dijkstra方法
+        // 调用dijFun方法
         dijkstra(vertices, weight, 0);
     }
 }
