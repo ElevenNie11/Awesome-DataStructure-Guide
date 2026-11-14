@@ -1,7 +1,7 @@
 # 用显式栈实现图的DFS笔记总结
 
 ## 1. 顶点类`vertex<T>`
-````
+````java
 class vertex<T> {
     private final T data;
     private boolean visited;
@@ -15,7 +15,7 @@ class vertex<T> {
 - neighbors：保存这个顶点的邻接点，例如A与B、C相连，A的邻接表就是[B, C]
 
 #### 构造方法和取值方法
-````
+````java
 vertex(T data){
     this.data = data;
 }
@@ -29,7 +29,7 @@ T getData(){
 `getData()`返回顶点中保存的数据，**返回类型也是T**
 
 #### 添加无向边
-````
+````java
 void connect(vertex<T> other){
     neighbors.add(other);
     other.neighbors.add(this);
@@ -46,7 +46,7 @@ void connect(vertex<T> other){
 ---
 
 ## 2. 用栈实现**DFS**
-```
+```java
 public static <T> void DFS(vertex<T> startVertex){
     if (startVertex == null) {
         return;
@@ -61,7 +61,7 @@ public static <T> void DFS(vertex<T> startVertex){
 
 虽然这里的类型叫**Deque**，但它支持`push`（入栈）和`pop`（出栈），所以可以按栈的方式使用，`ArrayDeque` 是它的**实现类**
 
-````
+````java
 while(!stack.isEmpty()){
     vertex<T> curr = stack.pop();
 
@@ -80,7 +80,7 @@ while(!stack.isEmpty()){
 - 否则标记为已访问，并打印它保存的数据
 一个顶点可能因为图中的多条边而被重复压入栈，所以需要检查`visited`，避免重复处理
 
-````
+````java
 List<vertex<T>> neighbors = curr.getNeighbors();
 
 for(int i = neighbors.size() - 1; i >= 0; i--){
@@ -98,12 +98,12 @@ for(int i = neighbors.size() - 1; i >= 0; i--){
 ## 3. Java中的泛型 T 是什么
 T是一个类型参数，可以理解为“稍后指定的数据类型”，这样就可以允许参数接收任何类型的对象了（**在new对象时指定出实际类型**）
 
-````
+````java
 class vertex<T>
 ````
 
 这声明了一个**泛型类**，创建对象时指定T的实际类型：
-````
+````java
 vertex<String> a = new vertex<>("A");
 vertex<Integer> number = new vertex<>(42);
 ````
@@ -116,7 +116,7 @@ vertex<Integer> number = new vertex<>(42);
 ### 问题
 #### Q: 为什么DFS方法的方法签名里也要显式写出 `<T>`?
 （*static静态方法不用通过创建对象就可以直接被调用*）
-````
+````java
 public static <T> void DFS(vertex<T> startVertex)
 ````
 - 这里的T是这个静态方法自己声明的类型参数，意思是：DFS可以接收任意数据类型的参数
