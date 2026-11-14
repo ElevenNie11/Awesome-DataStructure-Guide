@@ -49,10 +49,6 @@ public class Dijkstra {
                 if(visited[i] || weight[currentVertex][i] == inf){
                     continue;
                 }
-                // 保证不溢出
-                if(currentDistance + weight[currentVertex][i] > inf){
-                    continue;
-                }
                 // 计算新的距离
                 int newDistance = currentDistance + weight[currentVertex][i];
                 // 检查新距离是否比之前记录过的最短距离还短
@@ -89,7 +85,7 @@ public class Dijkstra {
             {inf, inf, 3, 2, 1, 0}   
         };
 
-        
+        // 调用dij方法
         dijkstra(vertices, weight, 0);
     }
 }
