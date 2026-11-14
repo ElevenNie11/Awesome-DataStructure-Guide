@@ -1,37 +1,28 @@
+# Dijkstra-completing with Priority Queue-code analysis
+# 迪杰斯特拉-用优先队列实现-代码分析
+# 【图解过程】
+## #01. 优先队列 Priority Queue
+
+### part1-Java里的【优先队列】语法
 ````java
-        // 优先队列按距离从小到大取出顶点，队列元素为{顶点编号, 当前距离}
-        PriorityQueue<int[]> priorityQueue = new PriorityQueue<>((a, b) -> Integer.compare(a[1], b[1]));
-        priorityQueue.offer(new int[]{startVertex, 0});     // 将起点加入优先队列
+PriorityQueue<int[]> priorityQueue = new PriorityQueue<>((a, b) -> Integer.compare(a[1], b[1]));
+````
+这行代码创建了一个存放`int[]`的优先队列，并规定队列按数组的第2个元素（因为下标为1，所以是第2个元素）从小到大排列：
+- `PriorityQueue<int[]>`：队列中存放的每个元素都是一个`int`数组
+- `new PriorityQueue<>(...)`：创建优先队列，右边的`<>`会根据左边的类型推断出`int[]`
+- `(a, b) -> ...`：Java的**Lambda**表达式，用来告诉队列怎样比较两个元素
+- `Integer.compare(a[1], b[1])`：比较两个数组的下标1处的值，返回结果的规则是：
+  - 小于 0：`a[1]` 较小
+  - 等于 0：两者相等
+  - 大于 0：`a[1]` 较大
 
-        // 每次取出当前距离起点最近且尚未确定的顶点
-        while(!priorityQueue.isEmpty()){
-            int[] current = priorityQueue.poll();
-            int currentVertex = current[0];                 // 当前顶点编号
-            int currentDistance = current[1];                // 入队时记录的距离
+---
 
-            // 距离已被更新时，队列中的旧记录作废，跳过
-            if(currentDistance != distance[currentVertex] || visited[currentVertex]){
-                continue;
-            }
-            // 取出后标记为已访问，该顶点的最短距离已经确定
-            visited[currentVertex] = true;
+### part2-本程序的约定：`new int[]{顶点编号, 当前距离}`
+因此`a[1]`和`b[1]`比较的是当前距离
 
-            // 又以该顶点为基点，更新其所有邻接点的距离
-            for(int j = 0; j < vertexCount; j++){
-                // 已确定的点跳过；没有边的点也跳过，避免 inf 相加溢出
-                if(visited[j] || weight[currentVertex][j] == inf){
-                    continue;
-                }
-                // 避免距离相加超过int可表示范围
-                if(currentDistance > inf - weight[currentVertex][j]){
-                    continue;
-                }
-                int newDistance = currentDistance + weight[currentVertex][j];
-                if(newDistance < distance[j]){
-                    distance[j] = newDistance;
-                    predecessor[j] = currentVertex;        // 记下j的前驱是currentVertex，方便回溯路径
-                    priorityQueue.offer(new int[]{j, newDistance}); // 距离变小后重新加入优先队列
-                }
-            }
-        }
+距离较小的数组会先从队列中取出，例如：
+````java
+priorityQueue.offer(new int[]{3, 8}); // 顶点3，距离8
+priorityQueue.offer(new int[]{1, 2}); // 顶点1，距离2
 ````

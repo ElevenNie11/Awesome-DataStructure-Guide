@@ -24,6 +24,7 @@ public class Dijkstra {
 
         
         // 【重要逻辑】
+        // 优先队列按当前距离从小到大取顶点，发现更短路线时更新距离并重新入队
         // 优先队列中的元素为{顶点编号, 起点到该顶点的当前距离}
         PriorityQueue<int[]> priorityQueue = new PriorityQueue<>((a, b) -> Integer.compare(a[1], b[1]));
         priorityQueue.offer(new int[]{startVertex, 0});  // 从起点开始搜索
