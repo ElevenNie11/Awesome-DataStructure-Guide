@@ -26,3 +26,47 @@ PriorityQueue<int[]> priorityQueue = new PriorityQueue<>((a, b) -> Integer.compa
 priorityQueue.offer(new int[]{3, 8}); // 顶点3，距离8
 priorityQueue.offer(new int[]{1, 2}); // 顶点1，距离2
 ````
+
+---
+
+### part3-主逻辑
+````java
+        // 每次取出当前距离起点最近的顶点
+        while(!priorityQueue.isEmpty()){
+            int[] current = priorityQueue.poll();// poll：从队头取出元素
+            // 队列里存的每一个元素都是一个数组，然后这个数组内部又有两个元素current[0]是顶点，current[1]是距离
+            int currentVertex = current[0];
+            int currentDistance = current[1];    
+
+            // 此时的最短距离不等于队头的距离或者已经被访问过，就continue
+            // 优先队列的队头【永远是当前的最短距离】
+            if(currentDistance != distance[currentVertex] || visited[currentVertex]){
+                continue;
+            }
+            visited[currentVertex] = true;
+
+            // 尝试经过当前顶点到达其他顶点，更新更短的距离
+            for(int i = 0; i < vertexCount; i++){
+                // 这个if语句是在找邻居
+                if(visited[i] || weight[currentVertex][i] == inf){
+                    continue;
+                }
+                // 计算新的距离
+                int newDistance = currentDistance + weight[currentVertex][i];
+                // 检查新距离是否比之前记录过的最短距离还短
+                if(newDistance < distance[i]){
+                    distance[i] = newDistance;      // 更新当前最短距离
+                    predecessor[i] = currentVertex; // 更新前驱节点
+                    priorityQueue.offer(new int[]{i, newDistance}); // 将更新后的距离放进优先队列，算法之后就能按距离从小到大继续处理它
+                }
+            }
+        }
+````
+
+---
+
+## #02. Hand-Written dequeue & enqueue process（手写出队&入队过程）
+
+![alt 出队&入队过程](img01.jpg)
+
+![alt 出队&入队过程](img02.jpg)
