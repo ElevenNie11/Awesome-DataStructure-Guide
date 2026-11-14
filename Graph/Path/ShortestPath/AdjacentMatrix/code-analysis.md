@@ -1,5 +1,24 @@
 # Dijkstra-completing with adjacent matrix-code analysis
 # 迪杰斯特拉-用邻接矩阵实现-代码分析
+# 【图解过程】
+![alt 邻接矩阵](adjacent-matrix.jpg)
+
+````
+        // 图的表示方法之一：邻接矩阵
+        String[] vertices = {"A", "B", "C", "D", "E", "F"};
+        int[][] weight = {
+            {0, 2, inf, 8, inf, inf},
+            {2, 0, inf, 5, 6, inf},
+            {inf, inf, 0, inf, 9, 3},
+            {8, 5, inf, 0, 3, 2},
+            {inf, 6, 9, 3, 0, 1},
+            {inf, inf, 3, 2, 1, 0}   
+        };
+````
+
+
+
+---
 
 ## Core: 先准备每个顶点的当前距离，再反复确定最近的顶点，并用它更新邻居的距离
 ### step1. 初始化
@@ -34,3 +53,7 @@
 ### step5. 输出结果
 - 所有轮次结束后，`distance`里保存了起点到各顶点的最短距离
 - 值仍为`inf`的顶点表示“不可达”
+
+
+---
+
