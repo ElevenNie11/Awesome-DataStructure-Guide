@@ -22,9 +22,9 @@
 - step4: Mark current node as visited.
 - **step5: Choose new current node from unvisited nodes with minimal distance.**
 
-![alt 迪杰斯特拉01](dijkstra01.jpg)
+![alt 迪杰斯特拉](dijkstra01.jpg)
 
-![alt 迪杰斯特拉02](dijkstra02.jpg)
+![alt 迪杰斯特拉](dijkstra02.jpg)
 
 ### 由于边权不能为负，一旦取出当前距离最小的顶点，就不可能再经由其他未确定顶点找到更短的路线，因此可以安全地确定它的最短距离
 
