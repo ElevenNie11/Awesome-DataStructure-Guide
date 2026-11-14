@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
+// @Author: Shiyi Nie(ElevenNie11)
+// @Date: 2026-11-10
+
 class vertex<T>{
     private final T data;                                   // 保存顶点数据
     private boolean visited;                                // 标记是否已被visit

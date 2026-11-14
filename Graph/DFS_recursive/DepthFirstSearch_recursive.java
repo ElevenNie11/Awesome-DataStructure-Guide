@@ -2,6 +2,9 @@ package Graph.DFS_recursive;
 import java.util.ArrayList;
 import java.util.List;
 
+// @Author: Shiyi Nie(ElevenNie11)
+// @Date: 2026-11-10
+
 class vertex<T>{
     private final T data;                                   // 保存顶点数据
     private boolean visited;                                // 标记是否已被visit
