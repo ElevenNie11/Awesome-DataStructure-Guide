@@ -23,6 +23,7 @@ public class Dijkstra {
 
 
         // 【重要逻辑】：建议搭配 Dijkstra-note.md 中的步骤来，结合着看会更易懂些
+        // 【图解过程】见同一级目录中的 code-analysis.md
         for(int i = 0; i < vertexCount; i++){
             int minIndex = -1;
             int minDistance = inf;
