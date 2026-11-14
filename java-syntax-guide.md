@@ -23,7 +23,7 @@
 
 ### `List<>`
 `List`是Java中表示**有序集合**的接口，它可以按顺序保存多个元素，并允许通过下标访问，常用实现是`ArrayList`
-````
+````java
     List<Integer> result = new ArrayList<>();
     result.add(5);
     result.add(6);
@@ -35,7 +35,7 @@
 当函数返回的是`List<String>`时，`System.out.println`会调用它的`toString()`方法，所以**输出不用写 for 循环**
 
 当然也可以写，如下：
-````
+````java
     List<String> result = buildArray(target, n);
     for(int i = 0; i < result.size(); i++){
         System.out.println(result.get(i));
@@ -65,7 +65,7 @@
 
 ### 普通for循环和增加for循环
 #### 普通for循环
-````
+````java
     for(int i = 0; i < students.length; i++){
         int student = students[i];
         System.out.println(student);
@@ -73,7 +73,7 @@
 ````
 #### 增强for循环
 `for(int student : students)`是Java的增强for循环，也叫*foreach*，它会依次取出students数组里的每个值，并把当前值放进变量student
-````
+````java
     int[] students = {1, 1, 0, 0};
     for(int student : students){
         System.out.println(student);
@@ -84,7 +84,7 @@
 
 ### `import java.util.*;`
 
-````
+````java
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ArrayDeque;
@@ -103,7 +103,7 @@ import java.util.Deque;
 ### Java-接口和实现类
 #### 接口规定“能做什么”，实现类负责“具体怎么做”
 #### 接口理解为一份“操作规范”，把实现类理解为“按这份规范做出来的具体工具”
-````
+````java
 import java.util.ArrayList;
 import java.util.List;
 
@@ -124,14 +124,16 @@ import java.util.Map;
 - 要创建具体对象，需要用实现类
 
 #### 【示例】
-````
+````java
 List<String> names = new List<>(); // 错误：List是接口，接口本身不可以创建对象
 ````
-````
+
+````java
 List<String> names = new ArrayList<>(); // 正确：要创建具体对象，需要用实现类
 names.add("小明");
 System.out.println(names.get(0));
 ````
+
 - 这里变量类型是`List`，实际创建的对象是`ArrayList`
 - 所以names可以调用`List`接口规定的方法
 - 而这些方法具体由`ArrayList`来执行
@@ -143,7 +145,7 @@ System.out.println(names.get(0));
 ## 🚀📚Java常用集合接口里规定的方法
 ### 接口规定可以使用哪些操作，具体实现由实现类提供
 例如：
-````
+````java
 Map<String, Integer> map = new HashMap<>();
 Queue<String> queue = new ArrayDeque<>();
 List<String> list = new ArrayList<>();
