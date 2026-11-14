@@ -1,9 +1,12 @@
 # Dijkstra-completing with adjacent matrix-code analysis
 # 迪杰斯特拉-用邻接矩阵实现-代码分析
 # 【图解过程】
+## #01. 邻接矩阵 Adjacent Matrix
 ![alt 邻接矩阵](adjacent-matrix.jpg)
 
-````
+### 邻居都是有权重不为0且不为**inf**的，权重为0代表顶点它自己，权重为**inf**表示不是邻居
+
+````java
         // 图的表示方法之一：邻接矩阵
         String[] vertices = {"A", "B", "C", "D", "E", "F"};
         int[][] weight = {
@@ -16,44 +19,65 @@
         };
 ````
 
+---
 
+## #02. 关键代码
+### 图里有6个顶点，按邻接矩阵的行列顺序记为 A、B、C、D、E、F
+### 我们以A为起点，来看代码每一轮如何选顶点、更新距离
+![alt text](关键代码.png)
+
+### #02.1. 分解part1
+```java
+int minIndex = -1;
+int minDistance = inf;
+for(int j = 0; j < vertexCount; j++){
+    if(!visited[j] && distance[j] < minDistance){
+        minIndex = j;
+        minDistance = distance[j];
+    }
+}
+```
+- `distance`记录从A出发目前找到的最短距离
+- 刚开始，只有A到自己的距离是0；其他顶点还没有找到路线，暂记为`inf`
+- 在 `for(int j = 0; j < vertexCount; j++)` 中，先从A出发，扫描所有未确定的顶点，选出暂定距离最小的顶点
+- 第一轮选中A，因为`distance[A] = 0`，由于还没有B、D的`distance`的值，所以循环结束以后会把A标记成`visited[A] = true;`
+- 接着`for(int k = 0; k < vertexCount; k++)`检查A的邻居：图中有 A—B（权重 2）和 A—D（权重 8）符合循环条件，于是更新：`distance[B] = 2`和`distance[D] = 8`
+
+#### 然后又进入⚠️最外层循环⚠️，可以发现：在未确定的顶点中，当前距离最小的是B（距离为2）`minDistance = distance[B];`
 
 ---
 
-## Core: 先准备每个顶点的当前距离，再反复确定最近的顶点，并用它更新邻居的距离
-### step1. 初始化
-- 一开始，程序不知道起点到其他顶点的距离，所以都设成inf
-- 每个顶点的前驱也设为空，然后把起点到自己的距离设为0
-- 此时，`distance` 保存的是“目前已知的最短距离”，**后续可能继续变短**
+### #02.2. 此时以B为出发点，分解part2
+````java
+if(minIndex == -1) break;
+visited[minIndex] = true;
+````
+- 代码将B标记为`visited`，即：`visited[1] = true;`
 
 ---
 
-### step2. 找到当前最近的未确定顶点
-每一轮都在尚未访问的顶点中，挑出`distance`最小的顶点，记为`minIndex`
-
-（如果找不到这样的顶点，说明剩下的顶点都不可达，算法可以结束）
-
----
-
-### step3. 确定这个顶点的最短距离
-- 选中`minIndex`后，把它标记为已访问
-- 由于它是所有未确定顶点中距离起点最近的，在边权非负的前提下，它的最短距离已经确定，之后无需再改
-
----
-
-### step4. 尝试缩短邻居的距离
-接着检查`minIndex`的所有邻居，对每个邻居`j`，比较两条路线：
-- 当前已知的起点到`j`的距离；
-- 起点先到`minIndex`，再从`minIndex`到`j`的距离
-
-如果第二条更短，就更新`distance[j]`，并记录`j`的前驱是`minIndex`这样可以逐步找到更短的路线
-
----
-
-### step5. 输出结果
-- 所有轮次结束后，`distance`里保存了起点到各顶点的最短距离
-- 值仍为`inf`的顶点表示“不可达”
-
-
----
-
+### #02.3. 此时以B为出发点，分解part3
+````java
+for(int k = 0; k < vertexCount; k++){
+    // visited[0] = visited[A] = true continue;
+    // visited[1] = visited[B] = true countinue;
+    // weight[1][2] == inf continue; （B、C不是邻居）
+    // ...... 
+    if(visited[k] || weight[minIndex][k] == inf){
+            continue;
+    }
+    // (distance[1] + weight[1][3] = 7) < (distance[3] = 8)
+    // distance[3] = 8 （即：distance[3] = distance[D] = 7）
+    // 更新D
+    if(distance[minIndex] + weight[minIndex][k] < distance[k]){
+            distance[k] = distance[minIndex] + weight[minIndex][k];
+            predecessor[k] = minIndex;
+    }
+}
+    // 当 k = 4 时，来到E
+    // weight[1][4] == 6
+    // (distance[B] + weight[1][4] = 2 + 6 = 8) < (distance[4] = inf)
+    // 更新E
+````
+- 通过B 到 D的路线长度是2 + 5 = 7，比当前的`distance[D] = 8`更短，所以更新D为7
+- 通过B 到 E的路线长度是2 + 6 = 8，所以更新E为8
