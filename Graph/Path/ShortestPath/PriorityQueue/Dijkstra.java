@@ -70,6 +70,26 @@ public class Dijkstra {
             }
         }
 
+        // 输出A到C的最短路径形状
+        int targetVertex = 2;               // C 的下标
+        if(distance[targetVertex] == inf){
+            System.out.println("A 到 C 不可达");
+        }else{
+            int[] path = new int[vertexCount];
+            int pathLength = 0;
+            // 从C开始，沿着前驱节点往回找（这一步叫“reconstructs”）
+            for(int currentIndex = targetVertex; currentIndex != -1; currentIndex = predecessor[currentIndex]){
+                path[pathLength++] = currentIndex;
+            }
+            // 倒序输出，恢复从起点到C的路径
+            for(int i = pathLength - 1; i >= 0; i--){
+                System.out.print(vertices[path[i]]);
+                if(i > 0){
+                    System.out.print(" -> ");
+                }
+            }
+        }
+        // 示例输出：A -> B -> D -> F -> C
     }
 
     // 测试Dijkstra
