@@ -11,5 +11,5 @@
 - 栈（普通栈+单调栈）：[leetcode题目集合](https://github.com/ElevenNie11/Awesome-DataStructure-Guide/tree/main/Stack)
 - 队列（普通队列+优先队列）：[leetcode题目集合](https://github.com/ElevenNie11/Awesome-DataStructure-Guide/tree/main/Queue) / [Queue队列PriorityQueue优先队列](https://github.com/ElevenNie11/Awesome-DataStructure-Guide/blob/main/Graph/Path/ShortestPath/PriorityQueue/PriorityQueue_StudyCode.java)
 - 顺序表：[leetcode题目集合](https://github.com/ElevenNie11/Awesome-DataStructure-Guide/tree/main/SequenceList)
-- 查找：[线性查找LinearSearch]() / [二分查找BinarySearch]()
+- 查找：[线性查找LinearSearch](https://github.com/ElevenNie11/Awesome-DataStructure-Guide/blob/main/Search/LinearSearch.java) / [二分查找BinarySearch](https://github.com/ElevenNie11/Awesome-DataStructure-Guide/blob/main/Search/BinarySearch.java) / [查找知识笔记](https://github.com/ElevenNie11/Awesome-DataStructure-Guide/blob/main/Search/note.md)
 #### 正在更新ing
