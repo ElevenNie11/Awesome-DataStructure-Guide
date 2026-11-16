@@ -69,7 +69,7 @@ DFS goes as far as it can down a given path,then backtrack until it finds anothe
 - **Kruskal（克鲁斯卡尔算法）**：边按权值从小到大排序，依次加入不会形成环的边。使用并查集判断两端是否已连通；复杂度通常为 `O(E log E)`
 - **Prim（普里姆算法）**：从任意顶点开始，每次选择连接已选顶点集合与未选顶点的最小边扩展。配合优先队列时复杂度约为 `O((V+E) log V)`
 
-**笔记见Graph文件夹下的minimum_spanning_tree文件里的note.png -> https://github.com/ElevenNie11/Awesome-DataStructure-Guide/blob/main/Graph/minimun_spanning_tree/note.jpg**
+**笔记见Graph文件夹下的minimum_spanning_tree文件里的note.png👉[MST最小生成树手写笔记](https://github.com/ElevenNie11/Awesome-DataStructure-Guide/blob/main/Graph/minimun_spanning_tree/note.jpg)
 
 ---
 
