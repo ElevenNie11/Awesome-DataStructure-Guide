@@ -63,7 +63,7 @@ public class BST_Insert {
         return root;                                           // 相等时不插入重复值，并返回当前根节点
     }
 
-    // 测试BST的插入操作
+    // 测试BST的插入操作：main里的for循环是通过【多次调用插入方法来构造整棵树】，插入方法每调用一次，只会插入一个节点！！
     public static void main(String[] args){
         TreeNode root = null;                        // 从空树开始
         int[] values = {8, 3, 10, 1, 6, 14};
