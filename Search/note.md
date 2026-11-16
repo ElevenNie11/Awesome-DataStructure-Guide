@@ -1,5 +1,5 @@
 # 数据结构 - 查找Search
-## #01. 二分查找-BinarySearch
+## #Chapter01. 二分查找-BinarySearch
 ### 时间复杂度-TimeComplexity
 ![alt 二分查找的时间复杂度](BinaryTreeTimeComplexity.png)
 ### 二分查找需要具备的【条件】-Conditions
@@ -26,3 +26,5 @@ int mid = left + (right - left) / 2; ✅
 - **偶数**个元素：例如下标 0 到 3，共有 4 个元素，`mid = 0 + (3 - 0) / 2 = 1`，取偏左的中间下标 1
 
 ---
+
+## #Chapter02. 平衡二叉树
