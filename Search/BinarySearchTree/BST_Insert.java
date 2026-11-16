@@ -5,17 +5,16 @@ package Search.BinarySearchTree;
 // @Content: BST-Insert Operation
 // 【须知】
 // @本程序复用了同一级目录中的【BST_Search.java】public类：TreeNode
-// class TreeNode{
-//     int value;
-//     TreeNode left;
-//     TreeNode right;
-//     TreeNode(int value){
-//         this.value = value;
-//         this.left = null;
-//         this.right = null;
-//     }
-// }
-
+class TreeNode{
+    int value;
+    TreeNode left;
+    TreeNode right;
+    TreeNode(int value){
+        this.value = value;
+        this.left = null;
+        this.right = null;
+    }
+}
 
 // 【正式开始】：从一棵空树开始，一步步插入value值，从而构造起一整棵BST二叉搜索树
 public class BST_Insert {
@@ -70,7 +69,7 @@ public class BST_Insert {
 
         // 【迭代法】逐个插入节点
         for(int value : values){
-            root = Insert_recursion(root, value);
+            root = Insert_iteration(root, value);
         }
         System.out.println("迭代法BST插入完成,根节点的值为:" + root.value);
 
