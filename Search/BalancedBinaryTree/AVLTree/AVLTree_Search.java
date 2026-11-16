@@ -15,7 +15,7 @@ class TreeNode{
     }
 }
 
-public class AVLTree {
+public class AVLTree_Search {
     public static TreeNode searchRecursion(TreeNode root, int target){
         if(root == null){
             return null;
