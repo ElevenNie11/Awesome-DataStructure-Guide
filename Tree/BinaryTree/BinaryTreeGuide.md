@@ -19,11 +19,11 @@
 - 二叉树是每个节点最多有两个孩子的树，通常称为左孩子和右孩子
 - 节点可以只有左孩子、只有右孩子，也可以没有孩子（叶子节点）
 - 满二叉树、完全二叉树、平衡二叉树是二叉树的不同类型，要求比“每个节点最多两个孩子”更严格
-- 常见遍历方式有前序、中序、后序和层序遍历（详情可见*BinaryTree/AwesomeTraversal*文件）
+- 常见遍历方式有前序、中序、后序和层序遍历（详情可见👉[二叉树的前中后序遍历](https://github.com/ElevenNie11/Awesome-DataStructure-Guide/tree/main/Tree/BinaryTree/AwesomeTraversal)）
 
 ---
 
 ### 二叉搜索树BST的概念
 - **二叉树**：每个节点最多有两个孩子，分别是左孩子和右孩子
 - **二叉搜索树（BST）**：**首先是一棵二叉树**，还要求节点值有顺序：左子树的值小于当前节点，右子树的值大于当前节点
-- **判断一棵二叉树是否为BST**：使用中序遍历inorderTraversal，见`Awesome01/checkBST.java`
+- **判断一棵二叉树是否为BST**：使用中序遍历inorderTraversal，见👉[checkBST](https://github.com/ElevenNie11/Awesome-DataStructure-Guide/blob/main/Tree/BinaryTree/Awesome01/checkBST.java)
