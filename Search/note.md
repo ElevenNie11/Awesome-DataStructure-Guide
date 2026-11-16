@@ -1,5 +1,11 @@
-# 数据结构 - 查找Search
-## #Chapter01. 二分查找-BinarySearch
+# 数据结构 - 查找Search 【静态查找 + 动态查找】
+
+## #Chapter01.【静态查找】-顺序查找-LinearSearch
+遍历数组，找到目标值，返回下标
+
+---
+
+## #Chapter02.【静态查找】-二分查找-BinarySearch
 ### 时间复杂度-TimeComplexity
 ![alt 二分查找的时间复杂度](BinaryTreeTimeComplexity.png)
 ### 二分查找需要具备的【条件】-Conditions
@@ -27,4 +33,10 @@ int mid = left + (right - left) / 2; ✅
 
 ---
 
-## #Chapter02. 平衡二叉树
+## #Chapter03.【动态查找】-二叉搜索树-BinarySearchTree
+也叫“二叉查找树”
+![alt 二叉查找树](BinarySearchTree.jpg)
+
+---
+
+## #Chapter04.【动态查找】-平衡二叉树-BalancedBinaryTree
