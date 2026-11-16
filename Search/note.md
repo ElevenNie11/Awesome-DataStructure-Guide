@@ -34,9 +34,12 @@ int mid = left + (right - left) / 2; ✅
 ---
 
 ## #Chapter03.【动态查找】-二叉搜索树-BinarySearchTree
+### BST可用操作：查找Search / 插入Insert / 删除Delete
 也叫“二叉查找树”
 ![alt 二叉查找树](BinarySearchTree.jpg)
 
 ---
 
 ## #Chapter04.【动态查找】-平衡二叉树-BalancedBinaryTree
+- AVL树
+- 红黑树
