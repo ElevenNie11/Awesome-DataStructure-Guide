@@ -35,6 +35,7 @@ int mid = left + (right - left) / 2; ✅
 
 ## #Chapter03.【动态查找】-二叉搜索树-BinarySearchTree
 ### BST可用操作：查找Search / 插入Insert / 删除Delete
+#### 【删除】操作的详细笔记可见👉[delete-note](https://github.com/ElevenNie11/Awesome-DataStructure-Guide/blob/main/Search/BinarySearchTree/delete-note.md)
 也叫“二叉查找树”
 ![alt 二叉查找树](BinarySearchTree.jpg)
 
