@@ -3,6 +3,12 @@
 ---
 # 📚【Properties】: BST + Balance Factor ∈ [-1, 0, 1]
 ## AVL树的2个【必备概念】：树高TreeHeight + 平衡因子BalanceFactor
+### 1. 树高TreeHeight：定义为以该节点为根的子树的高度（空树高度为0）
+### 2. 平衡因子BF：定义为该节点的左子树高度（深度）-右子树高度（深度）
+### 3. 谁的BF不属于[-1, 0 ,1]，谁就是【失衡节点】 🚨
+
+---
+
 ![alt AVL Tree](AVLTree.jpg)
 
 ---
@@ -78,7 +84,6 @@ newRoot.height = max(newRoot.left.height, newRoot.right.height) + 1
 
 ## 💻【代码】-关键逻辑
 ### BF = 左子树高度 - 右子树高度
-
 ````java
 // 【不平衡的4种情况】
 // AVL树的前提之一是它是一棵BST
@@ -98,7 +103,7 @@ if(BF > 1 && value > root.left.value){
 // RL：右子树的左侧过高，先右旋再左旋
 if(BF < -1 && value < root.right.value){
       root.right = rightRotate(root.right); // 先对右孩子右旋
-      return leftRotate(root);             // 再对失衡节点左旋
+      return leftRotate(root);              // 再对失衡节点左旋
 }
 ````
 ### BF = 左子树高度 - 右子树高度
@@ -110,7 +115,8 @@ if(BF < -1 && value < root.right.value){
 
 | 条件 | 判断路径 | 类型 | 调整 |
 |---|---|---|---|
-| `BF > 1 && value < root.left.value` | 向左，再向左 | LL | 对当前节点右旋 |
-| `BF > 1 && value > root.left.value` | 向左，再向右 | LR | 左孩子左旋，再当前节点右旋 |
-| `BF < -1 && value > root.right.value` | 向右，再向右 | RR | 对当前节点左旋 |
-| `BF < -1 && value < root.right.value` | 向右，再向左 | RL | 右孩子右旋，再当前节点左旋 |
+| `BF > 1 && value < root.left.value` | 向左，再向左 | LL | 对失衡节点右旋 |
+| `BF > 1 && value > root.left.value` | 向左，再向右 | LR | 左孩子左旋，再失衡节点右旋 |
+| `BF < -1 && value > root.right.value` | 向右，再向右 | RR | 对失衡节点左旋 |
+| `BF < -1 && value < root.right.value` | 向右，再向左 | RL | 右孩子右旋，再失衡节点左旋 |
+**【路径】就是从失衡节点开始，沿着二叉搜索树的比较规则，走到新插入节点的方向，向左走记作L，向右走记作R**
