@@ -13,3 +13,6 @@
 - 顺序表：[leetcode题目集合](https://github.com/ElevenNie11/Awesome-DataStructure-Guide/tree/main/SequenceList)
 - 查找：[线性查找LinearSearch](https://github.com/ElevenNie11/Awesome-DataStructure-Guide/blob/main/Search/LinearSearch.java) / [二分查找BinarySearch](https://github.com/ElevenNie11/Awesome-DataStructure-Guide/blob/main/Search/BinarySearch.java) / [二叉搜索树BST相关操作-查找-插入-删除](https://github.com/ElevenNie11/Awesome-DataStructure-Guide/tree/main/Search/BinarySearchTree) / [平衡二叉树（AVL树）](https://github.com/ElevenNie11/Awesome-DataStructure-Guide/tree/main/Search/BalancedBinaryTree/AVLTree) / [平衡二叉树-红黑树](https://github.com/ElevenNie11/Awesome-DataStructure-Guide/tree/main/Search/BalancedBinaryTree/RedBlackTree) / [【查找知识笔记】](https://github.com/ElevenNie11/Awesome-DataStructure-Guide/blob/main/Search/note.md)
 #### 正在更新ing
+---
+### ✏️除了每个章节含有笼统的【大笔记】之外，每份重要算法的同一级目录下都附带了相应的详细【小笔记】
+<img width="1262" height="261" alt="image" src="https://github.com/user-attachments/assets/2491c184-5c5b-49ab-9b28-176a7f6a8442" />
