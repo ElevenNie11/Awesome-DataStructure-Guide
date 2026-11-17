@@ -4,10 +4,25 @@ package Search.BalancedBinaryTree.AVLTree;
 // @Date: 2026-11-16
 // @Content: AVL Tree-Insert
 
+class TreeNode{
+    int value;
+    int height;
+    TreeNode left;
+    TreeNode right;
+    TreeNode(int value){
+        this.value = value;
+        this.height = 1;         // 树的高度TreeHeight默认为1
+    }
+}
+
 public class AVLTree_Insert {
     // 获取节点高度，空节点的高度为0
     private static int getHeight(TreeNode node){
-        return node == null ? 0 : node.height;
+        if(node == null){
+            return 0;
+        }else{
+            return node.height;
+        }
     }
 
     // 更新节点高度
@@ -104,10 +119,10 @@ public class AVLTree_Insert {
             root = insertRecursion(root, value);    // 每次插入一个值并自动调整平衡
         }
 
-        System.out.print("插入后的AVL树中序遍历：");
+        System.out.print("插入后的AVL树中序遍历结果为:");
         printInOrder(root);
         System.out.println();
-        System.out.println("根节点值：" + root.value);
-        System.out.println("树的高度：" + root.height);
+        System.out.println("根节点值: " + root.value);
+        System.out.println("树的高度: " + root.height);
     }
 }
