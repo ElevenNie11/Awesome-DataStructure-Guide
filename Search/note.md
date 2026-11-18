@@ -43,4 +43,5 @@ int mid = left + (right - left) / 2; ✅
 
 ## #Chapter04.【动态查找】-平衡二叉树-BalancedBinaryTree
 - AVL树（查找/插入/删除）👉 [AVL树](https://github.com/ElevenNie11/Awesome-DataStructure-Guide/tree/main/Search/BalancedBinaryTree/AVLTree)
-- 红黑树
+- 红黑树（查找/插入/删除）👉[红黑树]()
+![alt AVL树vs红黑树](AVL树vs红黑树.png)
