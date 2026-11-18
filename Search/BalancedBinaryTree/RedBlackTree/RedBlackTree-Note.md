@@ -1,0 +1,3 @@
+# 红黑树 Red-Black Tree
+## 红黑树是一种 Weakly Binary Search Tree  |  AVL树是一种 Strictly Binary Search Tree
+![alt 红黑树介绍](红黑树介绍.jpg)
