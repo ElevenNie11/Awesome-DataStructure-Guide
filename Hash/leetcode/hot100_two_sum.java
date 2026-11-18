@@ -1,4 +1,4 @@
-package Hash;
+package Hash.leetcode;
 import java.util.HashMap;
 import java.util.Map;
 // 本题使用哈希表记录已经遍历过的数字及其下标，避免了对每个数字再从头搜索
