@@ -1,19 +1,23 @@
 package Search.BalancedBinaryTree.RedBlackTree;
 
-class TreeNode{
-    int value;
-    TreeNode left, right, parent;
-
-    TreeNode(int value){
-        this.value = value;
-        this.left = null;
-        this.right = null;
-        this.parent = null;
-    }
-}
-
 // 红黑树旋转操作：旋转只改指针，不改颜色
 public class Rotation {
+    // 红黑树节点定义
+    // 【保留static更合适】：它只是表示TreeNode不依赖某个Rotation对象
+    static class TreeNode{
+        int value;
+        RedBlackTree_Insert.COLOR color;
+        TreeNode left, right, parent;
+
+        TreeNode(int value){
+            this.value = value;
+            this.left = null;
+            this.right = null;
+            this.parent = null;
+            this.color = RedBlackTree_Insert.COLOR.red; // 新插入的节点默认为红色
+        }
+    }
+
     // 左旋
     //        node                      right
     //       /    \                    /     \
