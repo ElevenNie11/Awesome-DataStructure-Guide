@@ -1,5 +1,4 @@
 package Search.BalancedBinaryTree.RedBlackTree;
-
 import Search.BalancedBinaryTree.RedBlackTree.Rotation.TreeNode;
 
 public class RedBlackTree_Insert {
@@ -8,6 +7,8 @@ public class RedBlackTree_Insert {
         black,
         red
     }
+
+
     // 辅助函数01：获取节点颜色，空节点视为黑色
     public static COLOR getColor(TreeNode node){
         if(node == null){
@@ -16,6 +17,7 @@ public class RedBlackTree_Insert {
             return node.color;
         }
     }
+
 
     // 辅助函数02：左旋
     public static TreeNode leftRotate(TreeNode node, TreeNode root){
@@ -40,6 +42,7 @@ public class RedBlackTree_Insert {
         return root;
     }
 
+
     // 辅助函数03：右旋
     public static TreeNode rightRotate(TreeNode node, TreeNode root){
         if(node == null || node.left == null){
@@ -63,104 +66,110 @@ public class RedBlackTree_Insert {
         return root;
     }
 
+
     // 【关键逻辑】：插入新值并修复红黑树性质
     public static TreeNode insert(TreeNode root, int value){
         TreeNode parent = null;
-        TreeNode current = root;
+        TreeNode curr = root;
 
-        // 按照二叉搜索树的规则查找插入位置
-        while(current != null){
-            parent = current;
-            if(value < current.value){
-                current = current.left;
-            }else if(value > current.value){
-                current = current.right;
+        // 【找位置】按照二叉搜索树的规则查找插入位置curr
+        while(curr != null){
+            parent = curr;
+            if(value < curr.value){
+                curr = curr.left;
+            }else if(value > curr.value){
+                curr = curr.right;
             }else{
-                return root;        // 不插入重复值
+                return root;                // curr = curr.value 不插入重复值
             }
         }
 
         TreeNode newNode = new TreeNode(value);
         newNode.parent = parent;
         if(parent == null){
-            root = newNode;         // 空树，新节点成为根节点
+            root = newNode;                 // 空树：让新节点成为根节点
         }else if(value < parent.value){
             parent.left = newNode;
         }else{
             parent.right = newNode;
         }
 
-        // 新节点默认为红色，插入后检查并修复红黑树
-        root = fixAfterInsert(root, newNode);
-        root.color = COLOR.black;   // 根节点必须为黑色
+        root = fixViolation(root, newNode); // 新节点默认为红色，插入后检查并修复红黑树
+        root.color = COLOR.black;           // 根节点必须为黑色
         return root;
     }
 
-    // 辅助函数02：插入后的颜色调整与旋转
-    public static TreeNode fixAfterInsert(TreeNode root, TreeNode node){
-        while(node != root && getColor(node.parent) == COLOR.red){
+
+    // 辅助函数04：修复好树的平衡
+    // 在修复过程种我们会使用到失衡节点的【uncle parent grandparent】
+    public static TreeNode fixViolation(TreeNode root, TreeNode node){
+         while(node != root && getColor(node.parent) == COLOR.red){
             TreeNode parent = node.parent;
             TreeNode grandparent = parent.parent;
+            TreeNode uncle;
 
-            // 父节点是祖父节点的左孩子
+            // 先按"父节点在祖父的左边还是右边"分成互为镜像的两大支
             if(parent == grandparent.left){
-                TreeNode uncle = grandparent.right;
+                uncle = grandparent.right;
 
-                // 情况一：叔叔节点为红色，父亲和叔叔变黑，祖父变红
                 if(getColor(uncle) == COLOR.red){
+                    // 场景2：uncle 是红的，光变色就够了，不用旋转
                     parent.color = COLOR.black;
                     uncle.color = COLOR.black;
                     grandparent.color = COLOR.red;
-                    node = grandparent;             // 向上继续检查
+                    // 父和叔都变黑了，冲突上移动
+                    node = grandparent;
                 }else{
-                    // 情况二：LR，先对父节点左旋，转换为LL
                     if(node == parent.right){
+                        // 场景3：uncle是黑的，且node在parent右边（triangle类型）
+                        // 先左旋 parent，把折线掰成line类型
                         node = parent;
-                        root = Rotation.leftRotate(node, root);
+                        root = leftRotate(node, root);
+                        // 转完 node 已经下沉一层，parent/grandparent 必须重新取
                         parent = node.parent;
                         grandparent = parent.parent;
                     }
-
-                    // 情况三：LL，父节点变黑、祖父变红，再对祖父右旋
+                    // 场景4：uncle 是黑的，且已经是"左-左"直线
+                    // 父染黑、祖父染红，再右旋祖父，让父节点顶上来
                     parent.color = COLOR.black;
                     grandparent.color = COLOR.red;
-                    root = Rotation.rightRotate(grandparent, root);
+                    root = rightRotate(grandparent, root);
                 }
             }else{
-                TreeNode uncle = grandparent.left;
+                // 镜像：父节点在祖父的右边
+                uncle = grandparent.left;
 
-                // 情况一：叔叔节点为红色，父亲和叔叔变黑，祖父变红
                 if(getColor(uncle) == COLOR.red){
+                    // 场景2的镜像：uncle 红，变色 + 上移
                     parent.color = COLOR.black;
                     uncle.color = COLOR.black;
                     grandparent.color = COLOR.red;
-                    node = grandparent;             // 向上继续检查
+                    node = grandparent;
                 }else{
-                    // 情况二：RL，先对父节点右旋，转换为RR
                     if(node == parent.left){
+                        // 场景3的镜像：左-右"折线"，先右旋 parent 掰成"右-右"直线
                         node = parent;
-                        root = Rotation.rightRotate(node, root);
+                        root = rightRotate(node, root);
                         parent = node.parent;
                         grandparent = parent.parent;
                     }
-
-                    // 情况三：RR，父节点变黑、祖父变红，再对祖父左旋
+                    // 场景4的镜像：父染黑、祖父染红，再左旋祖父
                     parent.color = COLOR.black;
                     grandparent.color = COLOR.red;
-                    root = Rotation.leftRotate(grandparent, root);
+                    root = leftRotate(grandparent, root);
                 }
             }
         }
-
+        // 场景1的收尾：把根染黑（insert 末尾已经有一句 root.color = COLOR.black，这里直接返回）
         return root;
     }
 
-    // 打印红黑树的中序遍历结果
+
+    // 辅助函数05：打印红黑树的中序遍历结果
     public static void printInorder(TreeNode root){
         if(root == null){
             return ;
         }
-        // 递归
         printInorder(root.left);
         System.out.print(root.value + (root.color == COLOR.red ? "(红) " : "(黑) "));
         printInorder(root.right);
