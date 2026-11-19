@@ -40,12 +40,15 @@ public class AVLTree_Insert {
     }
 
     // 辅助函数04：左旋
+    // 形参root其实是【当前子树的根，不是整棵树的根】
+    // newRoot是要上位的右孩子
+    // rotateNode是要过继的【上位右孩子的左子树】（中间子树）
     public static TreeNode leftRotate(TreeNode root){
         TreeNode newRoot = root.right;
         TreeNode rotateNode = newRoot.left;     
 
-        newRoot.left = root;
-        root.right = rotateNode;    
+        newRoot.left = root;     // 新根认旧根做左孩子
+        root.right = rotateNode; // 旧根的右孩子改成过继的中间子树   
 
         updateHeight(root);         // 先更新原根节点的高度
         updateHeight(newRoot);      // 再更新新根节点的高度
