@@ -45,3 +45,47 @@ int mid = left + (right - left) / 2; ✅
 - AVL树（查找/插入/删除）👉 [AVL树](https://github.com/ElevenNie11/Awesome-DataStructure-Guide/tree/main/Search/BalancedBinaryTree/AVLTree)
 - 红黑树（查找/插入/删除）👉[红黑树]()
 ![alt AVL树vs红黑树](AVL树vs红黑树.png)
+
+## ✅旋转Rotation-AVL树和红黑树的辅助函数的差别
+### 01.AVL树
+````java
+    // 辅助函数04：左旋
+    public static TreeNode leftRotate(TreeNode root){
+        TreeNode newRoot = root.right;
+        TreeNode rotateNode = newRoot.left;     
+
+        newRoot.left = root;
+        root.right = rotateNode;    
+
+        updateHeight(root);         // 先更新原根节点的高度
+        updateHeight(newRoot);      // 再更新新根节点的高度
+
+        return newRoot;
+    }
+````
+---
+### 02.红黑树
+````java
+    // 辅助函数02：左旋
+    public static TreeNode leftRotate(TreeNode root, TreeNode node){
+        TreeNode newRoot = node.right;  // newRoot是我们需要旋转的节点的右孩子
+        // 因为newRoot的左孩子一定大于我们需要旋转的节点但是小于newRoot，所以要到以newRoot为根的左子树去
+        TreeNode rotateNode = newRoot.left;
+
+        node.right = rotateNode;
+        if(rotateNode != null){
+            rotateNode.parent = node;
+        }
+        newRoot.parent = node.parent;
+        if(node.parent == null){
+            root = newRoot;
+        }else if(node == node.parent.left){
+            node.parent.left = newRoot;
+        }else{
+            node.parent.right = newRoot;
+        }
+        newRoot.left = node;
+        node.parent = newRoot;
+        return root;
+    }
+````
