@@ -11,3 +11,5 @@
 
 ### 🚀插入insert
 ![alt 插入](images/insert.jpg)
+#### 【总结插入的4种情况】
+![alt 总结插入的4种情况](images/总结插入的4种情况.png)
