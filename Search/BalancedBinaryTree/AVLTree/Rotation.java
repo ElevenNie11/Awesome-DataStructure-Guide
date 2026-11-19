@@ -24,9 +24,9 @@ public class Rotation {
     public static TreeNode leftRotate(TreeNode node){
         // 01. 先把要node的右孩子存下来，后面node.right会被改掉
         TreeNode right = node.right;
-        // 02. 把right的左子树b过继给node当右子树（b的取值正好落在node与cs之间）
+        // 02. 把right的左子树b过继给node当右子树（b的取值正好落在node与right之间）
         node.right = right.left;
-        // 03. 父子关系反转，node降为【right的左孩子
+        // 03. 父子关系反转，node降为【right的左孩子】
         right.left = node;
         // 04. 先更新原根节点的高度，再更新新根节点的高度
         updateHeight(node);
