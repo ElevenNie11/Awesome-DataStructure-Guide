@@ -50,42 +50,80 @@ int mid = left + (right - left) / 2; ✅
 ### 01.AVL树
 ````java
     // 辅助函数04：左旋
+    // 形参root其实是【当前子树的根，不是整棵树的根】
+    // newRoot是要上位的右孩子
+    // rotateNode是要过继的【上位右孩子的左子树】（中间子树）
     public static TreeNode leftRotate(TreeNode root){
         TreeNode newRoot = root.right;
         TreeNode rotateNode = newRoot.left;     
 
-        newRoot.left = root;
-        root.right = rotateNode;    
+        newRoot.left = root;     // 新根认旧根做左孩子
+        root.right = rotateNode; // 旧根的右孩子改成过继的中间子树   
 
         updateHeight(root);         // 先更新原根节点的高度
         updateHeight(newRoot);      // 再更新新根节点的高度
 
         return newRoot;
     }
+
+    /*-------------------------------------------------------------*/
+
+    // 左旋转：返回旋转后该子树的新根
+    //        node                      right
+    //       /    \                    /     \
+    //      a    right     --->      node     c
+    //           /   \              /   \
+    //          b     c            a     b
+    public static TreeNode leftRotate(TreeNode node){
+        // 01. 先把要node的右孩子存下来，后面node.right会被改掉
+        TreeNode right = node.right;
+        // 02. 把right的左子树b过继给node当右子树（b的取值正好落在node与cs之间）
+        node.right = right.left;
+        // 03. 父子关系反转，node降为【right的左孩子
+        right.left = node;
+        // 04. 先更新原根节点的高度，再更新新根节点的高度
+        updateHeight(node);
+        updateHeight(right);
+        // 05. 把新的子树根交还给调用方
+        return right;
+    }
 ````
+
 ---
+
 ### 02.红黑树
 ````java
-    // 辅助函数02：左旋
-    public static TreeNode leftRotate(TreeNode root, TreeNode node){
-        TreeNode newRoot = node.right;  // newRoot是我们需要旋转的节点的右孩子
-        // 因为newRoot的左孩子一定大于我们需要旋转的节点但是小于newRoot，所以要到以newRoot为根的左子树去
-        TreeNode rotateNode = newRoot.left;
-
-        node.right = rotateNode;
-        if(rotateNode != null){
-            rotateNode.parent = node;
+    // 左旋
+    //        node                      right
+    //       /    \                    /     \
+    //      a    right     --->      node     c
+    //           /   \              /   \
+    //          b     c            a     b
+    public static TreeNode leftRotate(TreeNode node, TreeNode root){
+        if(node == null || node.right == null){
+            return root;
         }
-        newRoot.parent = node.parent;
+        TreeNode right = node.right;   // 先把node的右孩子存下来，因为下一步node.right就被改掉了
+        node.right = right.left;       // 把right的左子树b过继给node当右子树（b的取值正好落在node与right之间）
+        if(right.left != null){
+            right.left.parent = node;  // b原来认right做父亲，现在改认node
+        }
+        right.parent = node.parent;    //  让right顶替node原来的位置，先接好它和"祖父"这一头
         if(node.parent == null){
-            root = newRoot;
+            // node本来就是根，right上位后成为新的根
+            root = right;
         }else if(node == node.parent.left){
-            node.parent.left = newRoot;
+            // node原本是左孩子，那么right也挂到左边
+            node.parent.left = right;
         }else{
-            node.parent.right = newRoot;
+            // node原本是右孩子，那么right也挂到右边
+            node.parent.right = right;
         }
-        newRoot.left = node;
-        node.parent = newRoot;
+
+        // 最后把父子关系反转，node成为right的左孩子
+        right.left = node;
+        node.parent = right;
+
         return root;
     }
 ````

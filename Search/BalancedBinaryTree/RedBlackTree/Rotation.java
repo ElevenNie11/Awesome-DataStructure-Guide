@@ -21,8 +21,8 @@ public class Rotation {
     //           /   \              /   \
     //          b     c            a     b
     public static TreeNode leftRotate(TreeNode node, TreeNode root){
-        if(node == null){
-            return null;
+        if(node == null || node.right == null){
+            return root;
         }
         TreeNode right = node.right;   // 先把node的右孩子存下来，因为下一步node.right就被改掉了
         node.right = right.left;       // 把right的左子树b过继给node当右子树（b的取值正好落在node与right之间）
@@ -56,8 +56,8 @@ public class Rotation {
     //       /   \                        /   \
     //      a     b                      b     c
     public static TreeNode rightRotate(TreeNode node, TreeNode root){
-        if(node == null){
-            return null;
+        if(node == null || node.left == null){
+            return root;
         }
         TreeNode left = node.left;
         node.left = left.right;
