@@ -1,5 +1,5 @@
 package Search.BalancedBinaryTree.RedBlackTree;
 
-public class RedBlackTree {
+public class RedBlackTree_Insert {
     
 }

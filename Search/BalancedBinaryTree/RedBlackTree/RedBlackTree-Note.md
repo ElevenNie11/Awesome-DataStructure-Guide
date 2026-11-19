@@ -6,3 +6,8 @@
 
 ## 🚨【关键】Rotation
 ![alt 旋转](images/Rotation.jpg)
+
+---
+
+### 🚀插入insert
+![alt 插入](images/insert.jpg)
