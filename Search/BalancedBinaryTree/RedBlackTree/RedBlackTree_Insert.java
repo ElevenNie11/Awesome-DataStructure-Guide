@@ -103,64 +103,58 @@ public class RedBlackTree_Insert {
     // 辅助函数04：修复好树的平衡
     // 在修复过程种我们会使用到失衡节点的【uncle parent grandparent】
     public static TreeNode fixViolation(TreeNode root, TreeNode node){
+        // 预备插入的新节点都默认为红色
          while(node != root && getColor(node.parent) == COLOR.red){
             TreeNode parent = node.parent;
             TreeNode grandparent = parent.parent;
             TreeNode uncle;
 
-            // 先按"父节点在祖父的左边还是右边"分成互为镜像的两大支
+            // 最外层分类：先按"父节点在祖父的左边还是右边"分类
             if(parent == grandparent.left){
+                // 那么叔叔节点就将是祖父节点的右孩子
                 uncle = grandparent.right;
-
+                // 场景1：uncle是红的，只是recolor就够了，不用旋转
                 if(getColor(uncle) == COLOR.red){
-                    // 场景2：uncle 是红的，光变色就够了，不用旋转
                     parent.color = COLOR.black;
                     uncle.color = COLOR.black;
                     grandparent.color = COLOR.red;
-                    // 父和叔都变黑了，冲突上移动
+                    // 父和叔都变黑了，祖父变红，冲突上移动
+                    node = grandparent;
+                }else{  // uncle是黑的
+                    if(node == parent.right){
+                        // 场景2：uncle是黑的，且node在parent右边（triangle类型）
+                        // rotate parent(left rotate)
+                        root = leftRotate(parent, root);
+                        grandparent = parent.parent;
+                        parent = node;  // 左旋parent以后，node上升了一层
+                    }else{
+                        // 场景3：uncle 是黑的，且已经是line类型
+                        // 右旋grandparent然后再recolor
+                        root = rightRotate(grandparent, root);
+                        parent.color = COLOR.red;
+                        grandparent.color = COLOR.black; 
+                    }
+                }
+            }else{
+                uncle = grandparent.left;
+                if(getColor(uncle) == COLOR.red){
+                    parent.color = COLOR.black;
+                    uncle.color = COLOR.black;
+                    grandparent.color = COLOR.red;
                     node = grandparent;
                 }else{
                     if(node == parent.right){
-                        // 场景3：uncle是黑的，且node在parent右边（triangle类型）
-                        // 先左旋 parent，把折线掰成line类型
-                        node = parent;
-                        root = leftRotate(node, root);
-                        // 转完 node 已经下沉一层，parent/grandparent 必须重新取
-                        parent = node.parent;
+                        root = rightRotate(parent, root);
                         grandparent = parent.parent;
+                        parent = node;
+                    }else{
+                        root = leftRotate(grandparent, root);
+                        parent.color = COLOR.red;
+                        grandparent.color = COLOR.black; 
                     }
-                    // 场景4：uncle 是黑的，且已经是"左-左"直线
-                    // 父染黑、祖父染红，再右旋祖父，让父节点顶上来
-                    parent.color = COLOR.black;
-                    grandparent.color = COLOR.red;
-                    root = rightRotate(grandparent, root);
-                }
-            }else{
-                // 镜像：父节点在祖父的右边
-                uncle = grandparent.left;
-
-                if(getColor(uncle) == COLOR.red){
-                    // 场景2的镜像：uncle 红，变色 + 上移
-                    parent.color = COLOR.black;
-                    uncle.color = COLOR.black;
-                    grandparent.color = COLOR.red;
-                    node = grandparent;
-                }else{
-                    if(node == parent.left){
-                        // 场景3的镜像：左-右"折线"，先右旋 parent 掰成"右-右"直线
-                        node = parent;
-                        root = rightRotate(node, root);
-                        parent = node.parent;
-                        grandparent = parent.parent;
-                    }
-                    // 场景4的镜像：父染黑、祖父染红，再左旋祖父
-                    parent.color = COLOR.black;
-                    grandparent.color = COLOR.red;
-                    root = leftRotate(grandparent, root);
                 }
             }
         }
-        // 场景1的收尾：把根染黑（insert 末尾已经有一句 root.color = COLOR.black，这里直接返回）
         return root;
     }
 
