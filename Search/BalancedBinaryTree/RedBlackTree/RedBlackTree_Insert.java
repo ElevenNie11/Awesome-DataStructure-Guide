@@ -128,8 +128,7 @@ public class RedBlackTree_Insert {
                     if(node == parent.right){
                         // 场景2：uncle是黑的，且node在parent右边（triangle类型）
                         // 先左旋parent，把"折线"掰成"直线"
-                        // 对应参考代码的：z = z.p; LEFT-ROTATE(z)
-                        node = parent;
+                        node = parent;  // node必须变化，否则会陷入while死循环
                         root = leftRotate(node, root);
                         // 旋转后：原node顶替了parent原来的位置，成为新的parent
                         // 祖父没有变，仍然是原来的grandparent
@@ -137,14 +136,11 @@ public class RedBlackTree_Insert {
                         grandparent = parent.parent;
                     }
                     // 场景3：uncle是黑的，且已经是line类型
-                    // 【注意】这一段不能塞进else里 —— 场景2掰直之后必须接着执行到这里
+                    root = rightRotate(grandparent, root);
                     parent.color = COLOR.black;
                     grandparent.color = COLOR.red;
-                    // 父染黑、祖父染红之后再右旋祖父，让父节点顶上来
-                    root = rightRotate(grandparent, root);
                 }
             }else{
-                // 镜像：父节点在祖父的右边
                 uncle = grandparent.left;
                 if(getColor(uncle) == COLOR.red){
                     parent.color = COLOR.black;
@@ -153,16 +149,15 @@ public class RedBlackTree_Insert {
                     node = grandparent;
                 }else{
                     if(node == parent.left){
-                        // 场景2的镜像：node在parent左边（triangle类型），先右旋parent掰直
                         node = parent;
                         root = rightRotate(node, root);
                         parent = node.parent;
                         grandparent = parent.parent;
                     }
-                    // 场景3的镜像：父染黑、祖父染红，再左旋祖父
+                    root = leftRotate(grandparent, root);
                     parent.color = COLOR.black;
                     grandparent.color = COLOR.red;
-                    root = leftRotate(grandparent, root);
+                    
                 }
             }
         }
