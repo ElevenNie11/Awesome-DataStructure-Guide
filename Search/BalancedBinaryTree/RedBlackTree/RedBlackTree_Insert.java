@@ -101,14 +101,18 @@ public class RedBlackTree_Insert {
 
 
     // 辅助函数04：修复好树的平衡
-    // 在修复过程种我们会使用到失衡节点的【uncle parent grandparent】
+    // 在修复过程中我们会使用到失衡节点的【uncle parent grandparent】
+    // 修复操作有两个：【recolor和rotate】
+    // 场景1：uncle是红的                      -> 只变色（recolor），冲突上移到祖父
+    // 场景2：uncle是黑的，且是"折线"(triangle) -> 先旋转parent，把折线掰成直线（再进行场景3）
+    // 场景3：uncle是黑的，且是"直线"(line)     -> 先旋转祖父(rotate)，再变色(recolor)
+    // 【注意】：场景2和场景3是连招，掰直之后必须接着做场景3
     public static TreeNode fixViolation(TreeNode root, TreeNode node){
         // 预备插入的新节点都默认为红色
-         while(node != root && getColor(node.parent) == COLOR.red){
+        while(node != root && getColor(node.parent) == COLOR.red){
             TreeNode parent = node.parent;
             TreeNode grandparent = parent.parent;
             TreeNode uncle;
-
             // 最外层分类：先按"父节点在祖父的左边还是右边"分类
             if(parent == grandparent.left){
                 // 那么叔叔节点就将是祖父节点的右孩子
@@ -123,19 +127,24 @@ public class RedBlackTree_Insert {
                 }else{  // uncle是黑的
                     if(node == parent.right){
                         // 场景2：uncle是黑的，且node在parent右边（triangle类型）
-                        // rotate parent(left rotate)
-                        root = leftRotate(parent, root);
+                        // 先左旋parent，把"折线"掰成"直线"
+                        // 对应参考代码的：z = z.p; LEFT-ROTATE(z)
+                        node = parent;
+                        root = leftRotate(node, root);
+                        // 旋转后：原node顶替了parent原来的位置，成为新的parent
+                        // 祖父没有变，仍然是原来的grandparent
+                        parent = node.parent;
                         grandparent = parent.parent;
-                        parent = node;  // 左旋parent以后，node上升了一层
-                    }else{
-                        // 场景3：uncle 是黑的，且已经是line类型
-                        // 右旋grandparent然后再recolor
-                        root = rightRotate(grandparent, root);
-                        parent.color = COLOR.red;
-                        grandparent.color = COLOR.black; 
                     }
+                    // 场景3：uncle是黑的，且已经是line类型
+                    // 【注意】这一段不能塞进else里 —— 场景2掰直之后必须接着执行到这里
+                    parent.color = COLOR.black;
+                    grandparent.color = COLOR.red;
+                    // 父染黑、祖父染红之后再右旋祖父，让父节点顶上来
+                    root = rightRotate(grandparent, root);
                 }
             }else{
+                // 镜像：父节点在祖父的右边
                 uncle = grandparent.left;
                 if(getColor(uncle) == COLOR.red){
                     parent.color = COLOR.black;
@@ -143,20 +152,23 @@ public class RedBlackTree_Insert {
                     grandparent.color = COLOR.red;
                     node = grandparent;
                 }else{
-                    if(node == parent.right){
-                        root = rightRotate(parent, root);
+                    if(node == parent.left){
+                        // 场景2的镜像：node在parent左边（triangle类型），先右旋parent掰直
+                        node = parent;
+                        root = rightRotate(node, root);
+                        parent = node.parent;
                         grandparent = parent.parent;
-                        parent = node;
-                    }else{
-                        root = leftRotate(grandparent, root);
-                        parent.color = COLOR.red;
-                        grandparent.color = COLOR.black; 
                     }
+                    // 场景3的镜像：父染黑、祖父染红，再左旋祖父
+                    parent.color = COLOR.black;
+                    grandparent.color = COLOR.red;
+                    root = leftRotate(grandparent, root);
                 }
             }
         }
         return root;
     }
+
 
 
     // 辅助函数05：打印红黑树的中序遍历结果
@@ -173,7 +185,7 @@ public class RedBlackTree_Insert {
     // 【目的】：从空树开始，通过一步步插入，创建一棵红黑树
     public static void main(String[] args){
         TreeNode root = null;
-        int[] values = {8, 5, 15, 12, 19, 10, 9, 13, 23};
+        int[] values = {8, 5, 15, 12, 19, 9, 13, 23, 10};
         for(int value: values){
             root = insert(root, value);
         }
