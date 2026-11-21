@@ -128,7 +128,7 @@ public class RedBlackTree_Insert {
                     if(node == parent.right){
                         // 场景2：uncle是黑的，且node在parent右边（triangle类型）
                         // 先左旋parent，把"折线"掰成"直线"
-                        node = parent;  // node必须变化，否则会陷入while死循环
+                        node = parent;
                         root = leftRotate(node, root);
                         // 旋转后：原node顶替了parent原来的位置，成为新的parent
                         // 祖父没有变，仍然是原来的grandparent
