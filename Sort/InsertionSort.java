@@ -1,5 +1,9 @@
 package Sort;
 
+// Steps:
+// 1.) Divide the array into two parts, sorted and unsorted.
+// 2.) One by one take an element from unsorted it into sorted.
+
 public class InsertionSort {
     public static void insertionSort(int[] arr){
         for(int i = 1; i < arr.length; i++){
