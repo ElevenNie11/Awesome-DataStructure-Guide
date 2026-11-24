@@ -12,7 +12,7 @@
 - 队列（普通队列+优先队列）：[leetcode题目集合](https://github.com/ElevenNie11/Awesome-DataStructure-Guide/tree/main/Queue) / [Queue队列PriorityQueue优先队列](https://github.com/ElevenNie11/Awesome-DataStructure-Guide/blob/main/Graph/Path/ShortestPath/PriorityQueue/PriorityQueue_StudyCode.java)
 - 顺序表：[leetcode题目集合](https://github.com/ElevenNie11/Awesome-DataStructure-Guide/tree/main/SequenceList)
 - 查找：[线性查找LinearSearch](https://github.com/ElevenNie11/Awesome-DataStructure-Guide/blob/main/Search/LinearSearch.java) / [二分查找BinarySearch](https://github.com/ElevenNie11/Awesome-DataStructure-Guide/blob/main/Search/BinarySearch.java) / [二叉搜索树BST相关操作-查找-插入-删除](https://github.com/ElevenNie11/Awesome-DataStructure-Guide/tree/main/Search/BinarySearchTree) / [平衡二叉树（AVL树）](https://github.com/ElevenNie11/Awesome-DataStructure-Guide/tree/main/Search/BalancedBinaryTree/AVLTree) / [平衡二叉树-红黑树](https://github.com/ElevenNie11/Awesome-DataStructure-Guide/tree/main/Search/BalancedBinaryTree/RedBlackTree) / [【查找知识笔记】](https://github.com/ElevenNie11/Awesome-DataStructure-Guide/blob/main/Search/note.md)
-- 排序：[插入排序](https://github.com/ElevenNie11/Awesome-DataStructure-Guide/blob/main/Sort/InsertionSort.java) / [选择排序](https://github.com/ElevenNie11/Awesome-DataStructure-Guide/blob/main/Sort/SelectionSort.java)
+- 排序：[插入排序](https://github.com/ElevenNie11/Awesome-DataStructure-Guide/blob/main/Sort/InsertionSort.java) / [选择排序](https://github.com/ElevenNie11/Awesome-DataStructure-Guide/blob/main/Sort/SelectionSort.java) / [冒泡排序](https://github.com/ElevenNie11/Awesome-DataStructure-Guide/blob/main/Sort/BubbleSort.java) / [归并排序]() / [排序笔记]()
 #### 正在更新ing
 ---
 ### ✏️除了每个章节含有笼统的【大笔记】之外，每份重要算法的同一级目录下都附带了相应的详细【小笔记】
