@@ -1,4 +1,5 @@
 package Sort;
+// Reaptedly compare adjacent numbers, move the larger one step by step to the right, like bubbles rising to the top.
 
 public class BubbleSort {
     public static void bubbleSort(int[] arr){
