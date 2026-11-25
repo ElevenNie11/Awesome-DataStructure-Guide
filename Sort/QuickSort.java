@@ -3,21 +3,16 @@ import java.util.Arrays;
 
 public class QuickSort {
     public static void quickSort(int[] arr, int low, int high){
-        if(low < high){
-            // Partition the array and get the pivot position.
-            int pi = partition(arr, low, high);
-            // Recursively sort the left side of the pivot.
-            quickSort(arr, low, pi - 1);
-            // Recursively sort the right side of the pivot.
-            quickSort(arr, pi + 1, high);
+        if(low < high){    
+            int pi = partition(arr, low, high); // Partition the array and get the pivot position.
+            quickSort(arr, low, pi - 1);        // Recursively sort the left side of the pivot.
+            quickSort(arr, pi + 1, high);       // Recursively sort the right side of the pivot.
         }
     }
 
     private static int partition(int[] arr, int low, int high){
-        // Set the last element as the pivot.
-        int pivot = arr[high];
-        // Initialize pointer i to low - 1.
-        int i = low - 1;
+        int pivot = arr[high];      // Set the last element as the pivot.
+        int i = low - 1;            // Initialize pointer i to low - 1.
         // Iterate from low to high - 1.
         for(int j = low; j < high; j++){
             // Move elements less than or equal to the pivot to the left.
@@ -26,10 +21,8 @@ public class QuickSort {
                 swap(arr, i, j);
             }
         }
-        // Place the pivot in its correct position.
-        swap(arr, i + 1, high);
-        // Return the pivot position.
-        return i + 1;
+        swap(arr, i + 1, high);    // Place the pivot in its correct position.
+        return i + 1;              // Return the pivot position.
     }
 
     public static void swap(int[] arr, int i, int j){
@@ -37,6 +30,7 @@ public class QuickSort {
         arr[i] = arr[j];
         arr[j] = temp;
     }
+    
     // 测试快速排序
     public static void main(String[] args){
         int[] arr = {8, 3, 5, 1, 9, 2, 7};
