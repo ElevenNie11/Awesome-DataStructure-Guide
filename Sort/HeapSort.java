@@ -3,7 +3,7 @@ package Sort;
 // 完全二叉树(Complete Binary Tree)：从上到下，从左到右
 // Heap: Complete Binary Tree with specific rules.
 // MaxHeap: Parent >= Child (ASC)  【大顶堆】用最大堆把数组升序排列
-// MinHeap: Parent <= Child (DESC) 【小顶堆】用最小堆把数组降序 排列
+// MinHeap: Parent <= Child (DESC) 【小顶堆】用最小堆把数组降序排列
 
 // 【先把数组构建最大堆，再不断将堆顶最大值移到数组末尾】
 // Asc algorithm steps as follow:
