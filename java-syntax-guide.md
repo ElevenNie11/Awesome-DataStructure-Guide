@@ -224,3 +224,9 @@ List<String> list = new ArrayList<>();
 | `remove(index)` | 删除指定位置的元素 | `list.remove(0);` |
 | `size()` | 获取元素数量 | `list.size();` |
 | `isEmpty()` | 判断列表是否为空 | `list.isEmpty();` |
+
+### `System.out.println(Arrays.toString(arr));`
+- 这行代码的作用是：把数组arr转成容易阅读的**字符串**，然后打印出来
+- `Arrays.toString(arr)`：把数组中的元素转换成字符串：例如 {1, 2, 3} 会变成 "[1, 2, 3]"
+- 使用`Arrays.toString`需要在文件开头导入**Arrays**：`import java.util.Arrays;`
+- 如果直接写`System.out.println(arr);`，不会显示数组元素，而会显示类似 [I@...  的标识
