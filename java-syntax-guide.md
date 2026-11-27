@@ -225,6 +225,8 @@ List<String> list = new ArrayList<>();
 | `size()` | 获取元素数量 | `list.size();` |
 | `isEmpty()` | 判断列表是否为空 | `list.isEmpty();` |
 
+---
+
 ### `System.out.println(Arrays.toString(arr));`
 - 这行代码的作用是：把数组arr转成容易阅读的**字符串**，然后打印出来
 - `Arrays.toString(arr)`：把数组中的元素转换成字符串：例如 {1, 2, 3} 会变成 "[1, 2, 3]"
