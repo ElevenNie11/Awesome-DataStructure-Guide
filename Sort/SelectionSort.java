@@ -25,7 +25,7 @@ public class SelectionSort {
          }
     }
 
-    // 测试折半插入排序
+    // 测试选择排序
     public static void main(String[] args) {
         int[] arr = {4, 7, 2, 3, 0, 11};
         selectionSort(arr);
